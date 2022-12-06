@@ -25,7 +25,6 @@ INT_TYPE: 'int';
 FLOAT_TYPE: 'float';
 BOOL_TYPE: 'bool';
 STRING_TYPE: 'string';
-VAR_TYPE: 'var';
 
 // Control
 IF: 'if';
@@ -38,16 +37,25 @@ FLOAT: [0-9]+ .[0-9]+;
 BOOL: 'true' | 'false';
 STRING: '"' [.]* '"';
 
+VAR: 'var';
+RETURN: 'return';
+
 FUNC: 'func';
 PACKAGE: 'package main';
 IMPORT: 'import "fmt"';
 MAIN: 'main';
 
-NEWLINE: [\r\n]+;
+PRINT: 'fmt.Println';
+
+NL: [\r\n]+;
 LB: '(';
 RB: ')';
 CLB: '{';
 CRB: '}';
+COMMA: ',';
+SEMICOLON: ';';
+IS: '=';
 
+WHITESPACE: [ ]+ -> skip;
 IDENTIFIER: [a-zA-Z][_a-zA-Z0-9]*;
 COMMENT: '//' [.]* '\n' | '/*' [.]* '*/';
