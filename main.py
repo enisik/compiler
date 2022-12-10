@@ -19,9 +19,10 @@ def main(argv):
 
 if __name__ == '__main__':
     tree, stream = main(sys.argv)
+    print(tree.ast)
 
     # for token in stream.tokens:
     #    print(token)
     #a = ASTGenerator.Node('a')
     # print(a.value)
-    print(tree.toStringTree())
+    # print(tree.toStringTree())

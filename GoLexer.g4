@@ -7,7 +7,6 @@ RETURN: 'return';
 FUNC: 'func';
 PACKAGE: 'package';
 IMPORT: 'import';
-MAIN: 'main';
 
 // OTHER KEYWORDS
 
@@ -58,7 +57,7 @@ CRB: '}';
 COMMA: ',';
 DOT: '.';
 SEMICOLON: ';';
-IS: '=';
+ASSIGN: '=';
 
 WHITESPACE: [ \t]+ -> skip;
 COMMENT: ('//' .*? '\n' | '/*' .*? '*/') -> skip;

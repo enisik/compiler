@@ -17,30 +17,30 @@ class GoParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by GoParser#main_method.
-    def enterMain_method(self, ctx:GoParser.Main_methodContext):
+    # Enter a parse tree produced by GoParser#main_function.
+    def enterMain_function(self, ctx:GoParser.Main_functionContext):
         pass
 
-    # Exit a parse tree produced by GoParser#main_method.
-    def exitMain_method(self, ctx:GoParser.Main_methodContext):
-        pass
-
-
-    # Enter a parse tree produced by GoParser#methods.
-    def enterMethods(self, ctx:GoParser.MethodsContext):
-        pass
-
-    # Exit a parse tree produced by GoParser#methods.
-    def exitMethods(self, ctx:GoParser.MethodsContext):
+    # Exit a parse tree produced by GoParser#main_function.
+    def exitMain_function(self, ctx:GoParser.Main_functionContext):
         pass
 
 
-    # Enter a parse tree produced by GoParser#method.
-    def enterMethod(self, ctx:GoParser.MethodContext):
+    # Enter a parse tree produced by GoParser#functions.
+    def enterFunctions(self, ctx:GoParser.FunctionsContext):
         pass
 
-    # Exit a parse tree produced by GoParser#method.
-    def exitMethod(self, ctx:GoParser.MethodContext):
+    # Exit a parse tree produced by GoParser#functions.
+    def exitFunctions(self, ctx:GoParser.FunctionsContext):
+        pass
+
+
+    # Enter a parse tree produced by GoParser#function.
+    def enterFunction(self, ctx:GoParser.FunctionContext):
+        pass
+
+    # Exit a parse tree produced by GoParser#function.
+    def exitFunction(self, ctx:GoParser.FunctionContext):
         pass
 
 

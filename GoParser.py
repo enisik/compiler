@@ -15,116 +15,125 @@ else:
 
 def serializedATN():
     return [
-        4,1,43,297,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,42,321,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
-        2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,1,0,1,0,1,0,1,0,1,0,5,0,
-        42,8,0,10,0,12,0,45,9,0,1,0,1,0,1,0,1,0,3,0,51,8,0,1,0,3,0,54,8,
-        0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,3,1,63,8,1,1,1,3,1,66,8,1,1,1,1,1,
-        3,1,70,8,1,1,1,1,1,3,1,74,8,1,1,1,1,1,1,2,1,2,1,2,3,2,81,8,2,1,3,
-        1,3,1,3,1,3,3,3,87,8,3,1,3,1,3,3,3,91,8,3,1,3,3,3,94,8,3,1,3,1,3,
-        3,3,98,8,3,1,3,1,3,3,3,102,8,3,1,3,1,3,1,4,3,4,107,8,4,1,4,3,4,110,
-        8,4,1,5,1,5,1,5,1,5,1,5,5,5,117,8,5,10,5,12,5,120,9,5,1,6,1,6,1,
-        7,1,7,1,7,1,7,1,7,1,7,1,7,3,7,131,8,7,1,8,1,8,1,8,1,8,1,8,1,8,1,
-        9,1,9,1,9,1,9,1,9,1,9,1,9,3,9,146,8,9,1,10,1,10,1,10,1,10,1,10,1,
-        10,1,10,3,10,155,8,10,1,11,1,11,3,11,159,8,11,1,11,1,11,3,11,163,
-        8,11,1,11,1,11,1,12,1,12,1,12,1,12,1,13,1,13,1,13,3,13,174,8,13,
-        1,13,1,13,3,13,178,8,13,1,13,3,13,181,8,13,1,13,3,13,184,8,13,1,
-        13,1,13,3,13,188,8,13,1,13,1,13,3,13,192,8,13,1,13,1,13,3,13,196,
-        8,13,1,13,3,13,199,8,13,1,13,3,13,202,8,13,1,13,1,13,1,13,1,13,1,
-        13,3,13,209,8,13,1,13,1,13,3,13,213,8,13,1,13,3,13,216,8,13,1,13,
-        1,13,3,13,220,8,13,1,14,1,14,1,14,3,14,225,8,14,1,14,1,14,3,14,229,
-        8,14,1,14,3,14,232,8,14,1,14,3,14,235,8,14,1,14,1,14,1,15,1,15,1,
-        15,5,15,242,8,15,10,15,12,15,245,9,15,1,15,1,15,1,15,1,15,5,15,251,
-        8,15,10,15,12,15,254,9,15,1,15,1,15,1,16,1,16,1,16,1,16,1,16,1,16,
-        1,16,1,16,1,16,1,16,3,16,268,8,16,1,16,1,16,1,16,1,16,1,16,1,16,
-        1,16,1,16,1,16,1,16,1,16,1,16,5,16,282,8,16,10,16,12,16,285,9,16,
-        1,17,1,17,1,17,1,17,1,17,1,17,1,17,1,17,3,17,295,8,17,1,17,0,1,32,
-        18,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,0,6,1,0,10,13,
-        2,0,14,15,27,27,1,0,16,18,1,0,14,15,1,0,19,24,1,0,25,26,333,0,36,
-        1,0,0,0,2,57,1,0,0,0,4,77,1,0,0,0,6,82,1,0,0,0,8,106,1,0,0,0,10,
-        111,1,0,0,0,12,121,1,0,0,0,14,130,1,0,0,0,16,132,1,0,0,0,18,145,
-        1,0,0,0,20,154,1,0,0,0,22,156,1,0,0,0,24,166,1,0,0,0,26,219,1,0,
-        0,0,28,221,1,0,0,0,30,238,1,0,0,0,32,267,1,0,0,0,34,294,1,0,0,0,
-        36,37,5,4,0,0,37,38,5,6,0,0,38,43,5,32,0,0,39,40,5,5,0,0,40,42,5,
-        31,0,0,41,39,1,0,0,0,42,45,1,0,0,0,43,41,1,0,0,0,43,44,1,0,0,0,44,
-        46,1,0,0,0,45,43,1,0,0,0,46,47,5,32,0,0,47,50,3,2,1,0,48,49,5,32,
-        0,0,49,51,3,4,2,0,50,48,1,0,0,0,50,51,1,0,0,0,51,53,1,0,0,0,52,54,
-        5,32,0,0,53,52,1,0,0,0,53,54,1,0,0,0,54,55,1,0,0,0,55,56,5,0,0,1,
-        56,1,1,0,0,0,57,58,5,3,0,0,58,59,5,6,0,0,59,60,5,33,0,0,60,62,5,
-        34,0,0,61,63,3,12,6,0,62,61,1,0,0,0,62,63,1,0,0,0,63,65,1,0,0,0,
-        64,66,5,32,0,0,65,64,1,0,0,0,65,66,1,0,0,0,66,67,1,0,0,0,67,69,5,
-        35,0,0,68,70,5,32,0,0,69,68,1,0,0,0,69,70,1,0,0,0,70,71,1,0,0,0,
-        71,73,3,8,4,0,72,74,5,32,0,0,73,72,1,0,0,0,73,74,1,0,0,0,74,75,1,
-        0,0,0,75,76,5,36,0,0,76,3,1,0,0,0,77,80,3,6,3,0,78,79,5,32,0,0,79,
-        81,3,4,2,0,80,78,1,0,0,0,80,81,1,0,0,0,81,5,1,0,0,0,82,83,5,3,0,
-        0,83,84,5,43,0,0,84,86,5,33,0,0,85,87,3,10,5,0,86,85,1,0,0,0,86,
-        87,1,0,0,0,87,88,1,0,0,0,88,90,5,34,0,0,89,91,3,12,6,0,90,89,1,0,
-        0,0,90,91,1,0,0,0,91,93,1,0,0,0,92,94,5,32,0,0,93,92,1,0,0,0,93,
-        94,1,0,0,0,94,95,1,0,0,0,95,97,5,35,0,0,96,98,5,32,0,0,97,96,1,0,
-        0,0,97,98,1,0,0,0,98,99,1,0,0,0,99,101,3,8,4,0,100,102,5,32,0,0,
-        101,100,1,0,0,0,101,102,1,0,0,0,102,103,1,0,0,0,103,104,5,36,0,0,
-        104,7,1,0,0,0,105,107,3,14,7,0,106,105,1,0,0,0,106,107,1,0,0,0,107,
-        109,1,0,0,0,108,110,3,18,9,0,109,108,1,0,0,0,109,110,1,0,0,0,110,
-        9,1,0,0,0,111,112,5,43,0,0,112,118,3,12,6,0,113,114,5,37,0,0,114,
-        115,5,43,0,0,115,117,3,12,6,0,116,113,1,0,0,0,117,120,1,0,0,0,118,
-        116,1,0,0,0,118,119,1,0,0,0,119,11,1,0,0,0,120,118,1,0,0,0,121,122,
-        7,0,0,0,122,13,1,0,0,0,123,124,3,16,8,0,124,125,5,32,0,0,125,126,
-        3,14,7,0,126,131,1,0,0,0,127,128,3,16,8,0,128,129,5,32,0,0,129,131,
-        1,0,0,0,130,123,1,0,0,0,130,127,1,0,0,0,131,15,1,0,0,0,132,133,5,
-        1,0,0,133,134,5,43,0,0,134,135,3,12,6,0,135,136,5,40,0,0,136,137,
-        3,32,16,0,137,17,1,0,0,0,138,139,3,20,10,0,139,140,5,32,0,0,140,
-        141,3,18,9,0,141,146,1,0,0,0,142,143,3,20,10,0,143,144,5,32,0,0,
-        144,146,1,0,0,0,145,138,1,0,0,0,145,142,1,0,0,0,146,19,1,0,0,0,147,
-        155,3,24,12,0,148,155,3,22,11,0,149,155,3,26,13,0,150,155,3,28,14,
-        0,151,155,3,30,15,0,152,153,5,2,0,0,153,155,3,32,16,0,154,147,1,
-        0,0,0,154,148,1,0,0,0,154,149,1,0,0,0,154,150,1,0,0,0,154,151,1,
-        0,0,0,154,152,1,0,0,0,155,21,1,0,0,0,156,158,5,35,0,0,157,159,5,
-        32,0,0,158,157,1,0,0,0,158,159,1,0,0,0,159,160,1,0,0,0,160,162,3,
-        18,9,0,161,163,5,32,0,0,162,161,1,0,0,0,162,163,1,0,0,0,163,164,
-        1,0,0,0,164,165,5,36,0,0,165,23,1,0,0,0,166,167,5,43,0,0,167,168,
-        5,40,0,0,168,169,3,32,16,0,169,25,1,0,0,0,170,171,5,7,0,0,171,173,
-        3,32,16,0,172,174,5,32,0,0,173,172,1,0,0,0,173,174,1,0,0,0,174,175,
-        1,0,0,0,175,177,5,35,0,0,176,178,5,32,0,0,177,176,1,0,0,0,177,178,
-        1,0,0,0,178,180,1,0,0,0,179,181,3,18,9,0,180,179,1,0,0,0,180,181,
-        1,0,0,0,181,183,1,0,0,0,182,184,5,32,0,0,183,182,1,0,0,0,183,184,
-        1,0,0,0,184,185,1,0,0,0,185,187,5,36,0,0,186,188,5,32,0,0,187,186,
-        1,0,0,0,187,188,1,0,0,0,188,189,1,0,0,0,189,191,5,8,0,0,190,192,
-        5,32,0,0,191,190,1,0,0,0,191,192,1,0,0,0,192,193,1,0,0,0,193,195,
-        5,35,0,0,194,196,5,32,0,0,195,194,1,0,0,0,195,196,1,0,0,0,196,198,
-        1,0,0,0,197,199,3,18,9,0,198,197,1,0,0,0,198,199,1,0,0,0,199,201,
-        1,0,0,0,200,202,5,32,0,0,201,200,1,0,0,0,201,202,1,0,0,0,202,203,
-        1,0,0,0,203,204,5,36,0,0,204,220,1,0,0,0,205,206,5,7,0,0,206,208,
-        3,32,16,0,207,209,5,32,0,0,208,207,1,0,0,0,208,209,1,0,0,0,209,210,
-        1,0,0,0,210,212,5,35,0,0,211,213,5,32,0,0,212,211,1,0,0,0,212,213,
-        1,0,0,0,213,215,1,0,0,0,214,216,3,18,9,0,215,214,1,0,0,0,215,216,
-        1,0,0,0,216,217,1,0,0,0,217,218,5,36,0,0,218,220,1,0,0,0,219,170,
-        1,0,0,0,219,205,1,0,0,0,220,27,1,0,0,0,221,222,5,9,0,0,222,224,3,
-        32,16,0,223,225,5,32,0,0,224,223,1,0,0,0,224,225,1,0,0,0,225,226,
-        1,0,0,0,226,228,5,35,0,0,227,229,5,32,0,0,228,227,1,0,0,0,228,229,
-        1,0,0,0,229,231,1,0,0,0,230,232,3,18,9,0,231,230,1,0,0,0,231,232,
-        1,0,0,0,232,234,1,0,0,0,233,235,5,32,0,0,234,233,1,0,0,0,234,235,
-        1,0,0,0,235,236,1,0,0,0,236,237,5,36,0,0,237,29,1,0,0,0,238,243,
-        5,43,0,0,239,240,5,38,0,0,240,242,5,43,0,0,241,239,1,0,0,0,242,245,
-        1,0,0,0,243,241,1,0,0,0,243,244,1,0,0,0,244,246,1,0,0,0,245,243,
-        1,0,0,0,246,247,5,33,0,0,247,252,3,32,16,0,248,249,5,37,0,0,249,
-        251,3,32,16,0,250,248,1,0,0,0,251,254,1,0,0,0,252,250,1,0,0,0,252,
-        253,1,0,0,0,253,255,1,0,0,0,254,252,1,0,0,0,255,256,5,34,0,0,256,
-        31,1,0,0,0,257,258,6,16,-1,0,258,268,5,43,0,0,259,268,3,30,15,0,
-        260,268,3,34,17,0,261,262,5,33,0,0,262,263,3,32,16,0,263,264,5,34,
-        0,0,264,268,1,0,0,0,265,266,7,1,0,0,266,268,3,32,16,5,267,257,1,
-        0,0,0,267,259,1,0,0,0,267,260,1,0,0,0,267,261,1,0,0,0,267,265,1,
-        0,0,0,268,283,1,0,0,0,269,270,10,4,0,0,270,271,7,2,0,0,271,282,3,
-        32,16,5,272,273,10,3,0,0,273,274,7,3,0,0,274,282,3,32,16,4,275,276,
-        10,2,0,0,276,277,7,4,0,0,277,282,3,32,16,3,278,279,10,1,0,0,279,
-        280,7,5,0,0,280,282,3,32,16,2,281,269,1,0,0,0,281,272,1,0,0,0,281,
-        275,1,0,0,0,281,278,1,0,0,0,282,285,1,0,0,0,283,281,1,0,0,0,283,
-        284,1,0,0,0,284,33,1,0,0,0,285,283,1,0,0,0,286,287,5,28,0,0,287,
-        295,6,17,-1,0,288,289,5,31,0,0,289,295,6,17,-1,0,290,291,5,29,0,
-        0,291,295,6,17,-1,0,292,293,5,30,0,0,293,295,6,17,-1,0,294,286,1,
-        0,0,0,294,288,1,0,0,0,294,290,1,0,0,0,294,292,1,0,0,0,295,35,1,0,
-        0,0,44,43,50,53,62,65,69,73,80,86,90,93,97,101,106,109,118,130,145,
-        154,158,162,173,177,180,183,187,191,195,198,201,208,212,215,219,
-        224,228,231,234,243,252,267,281,283,294
+        2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,1,0,1,0,1,0,1,0,1,0,1,0,
+        5,0,43,8,0,10,0,12,0,46,9,0,1,0,1,0,1,0,1,0,3,0,52,8,0,1,0,3,0,55,
+        8,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,3,1,65,8,1,1,1,3,1,68,8,1,1,
+        1,1,1,3,1,72,8,1,1,1,1,1,3,1,76,8,1,1,1,1,1,1,2,1,2,1,2,3,2,83,8,
+        2,1,2,1,2,1,3,1,3,1,3,1,3,3,3,91,8,3,1,3,1,3,3,3,95,8,3,1,3,3,3,
+        98,8,3,1,3,1,3,3,3,102,8,3,1,3,1,3,3,3,106,8,3,1,3,1,3,1,3,1,4,1,
+        4,1,4,3,4,114,8,4,1,4,5,4,117,8,4,10,4,12,4,120,9,4,1,4,3,4,123,
+        8,4,1,5,1,5,1,5,1,5,1,5,5,5,130,8,5,10,5,12,5,133,9,5,1,6,1,6,1,
+        7,1,7,1,7,1,7,1,7,3,7,142,8,7,1,8,1,8,1,8,1,8,1,8,1,8,1,9,1,9,1,
+        9,1,9,1,9,3,9,155,8,9,1,10,1,10,1,10,1,10,1,10,1,10,1,10,3,10,164,
+        8,10,1,11,1,11,3,11,168,8,11,1,11,3,11,171,8,11,1,11,3,11,174,8,
+        11,1,11,1,11,1,12,1,12,1,12,1,12,1,13,1,13,1,13,3,13,185,8,13,1,
+        13,1,13,3,13,189,8,13,1,13,3,13,192,8,13,1,13,3,13,195,8,13,1,13,
+        1,13,3,13,199,8,13,1,13,1,13,3,13,203,8,13,1,13,1,13,3,13,207,8,
+        13,1,13,3,13,210,8,13,1,13,3,13,213,8,13,1,13,1,13,1,13,1,13,1,13,
+        3,13,220,8,13,1,13,1,13,3,13,224,8,13,1,13,3,13,227,8,13,1,13,1,
+        13,3,13,231,8,13,1,14,1,14,1,14,3,14,236,8,14,1,14,1,14,3,14,240,
+        8,14,1,14,3,14,243,8,14,1,14,3,14,246,8,14,1,14,1,14,1,15,1,15,1,
+        15,5,15,253,8,15,10,15,12,15,256,9,15,1,15,1,15,1,15,1,15,5,15,262,
+        8,15,10,15,12,15,265,9,15,1,15,1,15,1,16,1,16,1,16,1,16,1,16,1,16,
+        1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,3,16,284,8,16,1,16,
+        1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,
+        1,16,1,16,1,16,1,16,1,16,1,16,5,16,306,8,16,10,16,12,16,309,9,16,
+        1,17,1,17,1,17,1,17,1,17,1,17,1,17,1,17,3,17,319,8,17,1,17,0,1,32,
+        18,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,0,6,1,0,9,12,
+        2,0,13,14,26,26,1,0,15,17,1,0,13,14,1,0,18,23,1,0,24,25,359,0,36,
+        1,0,0,0,2,58,1,0,0,0,4,79,1,0,0,0,6,86,1,0,0,0,8,113,1,0,0,0,10,
+        124,1,0,0,0,12,134,1,0,0,0,14,141,1,0,0,0,16,143,1,0,0,0,18,154,
+        1,0,0,0,20,163,1,0,0,0,22,165,1,0,0,0,24,177,1,0,0,0,26,230,1,0,
+        0,0,28,232,1,0,0,0,30,249,1,0,0,0,32,283,1,0,0,0,34,318,1,0,0,0,
+        36,37,5,4,0,0,37,38,5,42,0,0,38,39,4,0,0,1,39,44,5,31,0,0,40,41,
+        5,5,0,0,41,43,5,30,0,0,42,40,1,0,0,0,43,46,1,0,0,0,44,42,1,0,0,0,
+        44,45,1,0,0,0,45,47,1,0,0,0,46,44,1,0,0,0,47,48,5,31,0,0,48,51,3,
+        2,1,0,49,50,5,31,0,0,50,52,3,4,2,0,51,49,1,0,0,0,51,52,1,0,0,0,52,
+        54,1,0,0,0,53,55,5,31,0,0,54,53,1,0,0,0,54,55,1,0,0,0,55,56,1,0,
+        0,0,56,57,5,0,0,1,57,1,1,0,0,0,58,59,5,3,0,0,59,60,5,42,0,0,60,61,
+        4,1,1,1,61,62,5,32,0,0,62,64,5,33,0,0,63,65,3,12,6,0,64,63,1,0,0,
+        0,64,65,1,0,0,0,65,67,1,0,0,0,66,68,5,31,0,0,67,66,1,0,0,0,67,68,
+        1,0,0,0,68,69,1,0,0,0,69,71,5,34,0,0,70,72,5,31,0,0,71,70,1,0,0,
+        0,71,72,1,0,0,0,72,73,1,0,0,0,73,75,3,8,4,0,74,76,5,31,0,0,75,74,
+        1,0,0,0,75,76,1,0,0,0,76,77,1,0,0,0,77,78,5,35,0,0,78,3,1,0,0,0,
+        79,82,3,6,3,0,80,81,5,31,0,0,81,83,3,4,2,0,82,80,1,0,0,0,82,83,1,
+        0,0,0,83,84,1,0,0,0,84,85,6,2,-1,0,85,5,1,0,0,0,86,87,5,3,0,0,87,
+        88,5,42,0,0,88,90,5,32,0,0,89,91,3,10,5,0,90,89,1,0,0,0,90,91,1,
+        0,0,0,91,92,1,0,0,0,92,94,5,33,0,0,93,95,3,12,6,0,94,93,1,0,0,0,
+        94,95,1,0,0,0,95,97,1,0,0,0,96,98,5,31,0,0,97,96,1,0,0,0,97,98,1,
+        0,0,0,98,99,1,0,0,0,99,101,5,34,0,0,100,102,5,31,0,0,101,100,1,0,
+        0,0,101,102,1,0,0,0,102,103,1,0,0,0,103,105,3,8,4,0,104,106,5,31,
+        0,0,105,104,1,0,0,0,105,106,1,0,0,0,106,107,1,0,0,0,107,108,5,35,
+        0,0,108,109,6,3,-1,0,109,7,1,0,0,0,110,111,3,14,7,0,111,112,5,31,
+        0,0,112,114,1,0,0,0,113,110,1,0,0,0,113,114,1,0,0,0,114,118,1,0,
+        0,0,115,117,5,31,0,0,116,115,1,0,0,0,117,120,1,0,0,0,118,116,1,0,
+        0,0,118,119,1,0,0,0,119,122,1,0,0,0,120,118,1,0,0,0,121,123,3,18,
+        9,0,122,121,1,0,0,0,122,123,1,0,0,0,123,9,1,0,0,0,124,125,5,42,0,
+        0,125,131,3,12,6,0,126,127,5,36,0,0,127,128,5,42,0,0,128,130,3,12,
+        6,0,129,126,1,0,0,0,130,133,1,0,0,0,131,129,1,0,0,0,131,132,1,0,
+        0,0,132,11,1,0,0,0,133,131,1,0,0,0,134,135,7,0,0,0,135,13,1,0,0,
+        0,136,137,3,16,8,0,137,138,5,31,0,0,138,139,3,14,7,0,139,142,1,0,
+        0,0,140,142,3,16,8,0,141,136,1,0,0,0,141,140,1,0,0,0,142,15,1,0,
+        0,0,143,144,5,1,0,0,144,145,5,42,0,0,145,146,3,12,6,0,146,147,5,
+        39,0,0,147,148,3,32,16,0,148,17,1,0,0,0,149,150,3,20,10,0,150,151,
+        5,31,0,0,151,152,3,18,9,0,152,155,1,0,0,0,153,155,3,20,10,0,154,
+        149,1,0,0,0,154,153,1,0,0,0,155,19,1,0,0,0,156,164,3,24,12,0,157,
+        164,3,22,11,0,158,164,3,26,13,0,159,164,3,28,14,0,160,164,3,30,15,
+        0,161,162,5,2,0,0,162,164,3,32,16,0,163,156,1,0,0,0,163,157,1,0,
+        0,0,163,158,1,0,0,0,163,159,1,0,0,0,163,160,1,0,0,0,163,161,1,0,
+        0,0,164,21,1,0,0,0,165,167,5,34,0,0,166,168,5,31,0,0,167,166,1,0,
+        0,0,167,168,1,0,0,0,168,170,1,0,0,0,169,171,3,18,9,0,170,169,1,0,
+        0,0,170,171,1,0,0,0,171,173,1,0,0,0,172,174,5,31,0,0,173,172,1,0,
+        0,0,173,174,1,0,0,0,174,175,1,0,0,0,175,176,5,35,0,0,176,23,1,0,
+        0,0,177,178,5,42,0,0,178,179,5,39,0,0,179,180,3,32,16,0,180,25,1,
+        0,0,0,181,182,5,6,0,0,182,184,3,32,16,0,183,185,5,31,0,0,184,183,
+        1,0,0,0,184,185,1,0,0,0,185,186,1,0,0,0,186,188,5,34,0,0,187,189,
+        5,31,0,0,188,187,1,0,0,0,188,189,1,0,0,0,189,191,1,0,0,0,190,192,
+        3,18,9,0,191,190,1,0,0,0,191,192,1,0,0,0,192,194,1,0,0,0,193,195,
+        5,31,0,0,194,193,1,0,0,0,194,195,1,0,0,0,195,196,1,0,0,0,196,198,
+        5,35,0,0,197,199,5,31,0,0,198,197,1,0,0,0,198,199,1,0,0,0,199,200,
+        1,0,0,0,200,202,5,7,0,0,201,203,5,31,0,0,202,201,1,0,0,0,202,203,
+        1,0,0,0,203,204,1,0,0,0,204,206,5,34,0,0,205,207,5,31,0,0,206,205,
+        1,0,0,0,206,207,1,0,0,0,207,209,1,0,0,0,208,210,3,18,9,0,209,208,
+        1,0,0,0,209,210,1,0,0,0,210,212,1,0,0,0,211,213,5,31,0,0,212,211,
+        1,0,0,0,212,213,1,0,0,0,213,214,1,0,0,0,214,215,5,35,0,0,215,231,
+        1,0,0,0,216,217,5,6,0,0,217,219,3,32,16,0,218,220,5,31,0,0,219,218,
+        1,0,0,0,219,220,1,0,0,0,220,221,1,0,0,0,221,223,5,34,0,0,222,224,
+        5,31,0,0,223,222,1,0,0,0,223,224,1,0,0,0,224,226,1,0,0,0,225,227,
+        3,18,9,0,226,225,1,0,0,0,226,227,1,0,0,0,227,228,1,0,0,0,228,229,
+        5,35,0,0,229,231,1,0,0,0,230,181,1,0,0,0,230,216,1,0,0,0,231,27,
+        1,0,0,0,232,233,5,8,0,0,233,235,3,32,16,0,234,236,5,31,0,0,235,234,
+        1,0,0,0,235,236,1,0,0,0,236,237,1,0,0,0,237,239,5,34,0,0,238,240,
+        5,31,0,0,239,238,1,0,0,0,239,240,1,0,0,0,240,242,1,0,0,0,241,243,
+        3,18,9,0,242,241,1,0,0,0,242,243,1,0,0,0,243,245,1,0,0,0,244,246,
+        5,31,0,0,245,244,1,0,0,0,245,246,1,0,0,0,246,247,1,0,0,0,247,248,
+        5,35,0,0,248,29,1,0,0,0,249,254,5,42,0,0,250,251,5,37,0,0,251,253,
+        5,42,0,0,252,250,1,0,0,0,253,256,1,0,0,0,254,252,1,0,0,0,254,255,
+        1,0,0,0,255,257,1,0,0,0,256,254,1,0,0,0,257,258,5,32,0,0,258,263,
+        3,32,16,0,259,260,5,36,0,0,260,262,3,32,16,0,261,259,1,0,0,0,262,
+        265,1,0,0,0,263,261,1,0,0,0,263,264,1,0,0,0,264,266,1,0,0,0,265,
+        263,1,0,0,0,266,267,5,33,0,0,267,31,1,0,0,0,268,269,6,16,-1,0,269,
+        284,5,42,0,0,270,284,3,30,15,0,271,272,3,34,17,0,272,273,6,16,-1,
+        0,273,284,1,0,0,0,274,275,5,32,0,0,275,276,3,32,16,0,276,277,5,33,
+        0,0,277,278,6,16,-1,0,278,284,1,0,0,0,279,280,7,1,0,0,280,281,3,
+        32,16,5,281,282,6,16,-1,0,282,284,1,0,0,0,283,268,1,0,0,0,283,270,
+        1,0,0,0,283,271,1,0,0,0,283,274,1,0,0,0,283,279,1,0,0,0,284,307,
+        1,0,0,0,285,286,10,4,0,0,286,287,7,2,0,0,287,288,3,32,16,5,288,289,
+        6,16,-1,0,289,306,1,0,0,0,290,291,10,3,0,0,291,292,7,3,0,0,292,293,
+        3,32,16,4,293,294,6,16,-1,0,294,306,1,0,0,0,295,296,10,2,0,0,296,
+        297,7,4,0,0,297,298,3,32,16,3,298,299,6,16,-1,0,299,306,1,0,0,0,
+        300,301,10,1,0,0,301,302,7,5,0,0,302,303,3,32,16,2,303,304,6,16,
+        -1,0,304,306,1,0,0,0,305,285,1,0,0,0,305,290,1,0,0,0,305,295,1,0,
+        0,0,305,300,1,0,0,0,306,309,1,0,0,0,307,305,1,0,0,0,307,308,1,0,
+        0,0,308,33,1,0,0,0,309,307,1,0,0,0,310,311,5,27,0,0,311,319,6,17,
+        -1,0,312,313,5,30,0,0,313,319,6,17,-1,0,314,315,5,28,0,0,315,319,
+        6,17,-1,0,316,317,5,29,0,0,317,319,6,17,-1,0,318,310,1,0,0,0,318,
+        312,1,0,0,0,318,314,1,0,0,0,318,316,1,0,0,0,319,35,1,0,0,0,46,44,
+        51,54,64,67,71,75,82,90,94,97,101,105,113,118,122,131,141,154,163,
+        167,170,173,184,188,191,194,198,202,206,209,212,219,223,226,230,
+        235,239,242,245,254,263,283,305,307,318
     ]
 
 class GoParser ( GoASTParser ):
@@ -138,26 +147,26 @@ class GoParser ( GoASTParser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "'var'", "'return'", "'func'", "'package'", 
-                     "'import'", "'main'", "'if'", "'else'", "'for'", "'int'", 
-                     "'float64'", "'bool'", "'string'", "'+'", "'-'", "'*'", 
-                     "'/'", "'%'", "'=='", "'!='", "'<'", "'>'", "'<='", 
-                     "'>='", "'&&'", "'||'", "'!'", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "'('", "')'", 
-                     "'{'", "'}'", "','", "'.'", "';'", "'='" ]
+                     "'import'", "'if'", "'else'", "'for'", "'int'", "'float64'", 
+                     "'bool'", "'string'", "'+'", "'-'", "'*'", "'/'", "'%'", 
+                     "'=='", "'!='", "'<'", "'>'", "'<='", "'>='", "'&&'", 
+                     "'||'", "'!'", "<INVALID>", "<INVALID>", "<INVALID>", 
+                     "<INVALID>", "<INVALID>", "'('", "')'", "'{'", "'}'", 
+                     "','", "'.'", "';'", "'='" ]
 
     symbolicNames = [ "<INVALID>", "VAR", "RETURN", "FUNC", "PACKAGE", "IMPORT", 
-                      "MAIN", "IF", "ELSE", "FOR", "INT_TYPE", "FLOAT_TYPE", 
-                      "BOOL_TYPE", "STRING_TYPE", "PLUS", "MINUS", "STAR", 
-                      "DIVISON", "MODULO", "EQUALS", "UNEQUAL", "LESS", 
-                      "GREATER", "LESSEQUAL", "GREATEREQUAL", "AND", "OR", 
-                      "NOT", "INTEGER", "FLOAT", "BOOL", "STRING", "NL", 
-                      "LB", "RB", "CLB", "CRB", "COMMA", "DOT", "SEMICOLON", 
-                      "IS", "WHITESPACE", "COMMENT", "IDENTIFIER" ]
+                      "IF", "ELSE", "FOR", "INT_TYPE", "FLOAT_TYPE", "BOOL_TYPE", 
+                      "STRING_TYPE", "PLUS", "MINUS", "STAR", "DIVISON", 
+                      "MODULO", "EQUALS", "UNEQUAL", "LESS", "GREATER", 
+                      "LESSEQUAL", "GREATEREQUAL", "AND", "OR", "NOT", "INTEGER", 
+                      "FLOAT", "BOOL", "STRING", "NL", "LB", "RB", "CLB", 
+                      "CRB", "COMMA", "DOT", "SEMICOLON", "ASSIGN", "WHITESPACE", 
+                      "COMMENT", "IDENTIFIER" ]
 
     RULE_program = 0
-    RULE_main_method = 1
-    RULE_methods = 2
-    RULE_method = 3
+    RULE_main_function = 1
+    RULE_functions = 2
+    RULE_function = 3
     RULE_body = 4
     RULE_func_args = 5
     RULE_type = 6
@@ -173,10 +182,10 @@ class GoParser ( GoASTParser ):
     RULE_expr = 16
     RULE_literals = 17
 
-    ruleNames =  [ "program", "main_method", "methods", "method", "body", 
-                   "func_args", "type", "declarations", "declaration", "statements", 
-                   "statement", "block_stmt", "assignment", "if_control", 
-                   "for_control", "func_call", "expr", "literals" ]
+    ruleNames =  [ "program", "main_function", "functions", "function", 
+                   "body", "func_args", "type", "declarations", "declaration", 
+                   "statements", "statement", "block_stmt", "assignment", 
+                   "if_control", "for_control", "func_call", "expr", "literals" ]
 
     EOF = Token.EOF
     VAR=1
@@ -184,44 +193,43 @@ class GoParser ( GoASTParser ):
     FUNC=3
     PACKAGE=4
     IMPORT=5
-    MAIN=6
-    IF=7
-    ELSE=8
-    FOR=9
-    INT_TYPE=10
-    FLOAT_TYPE=11
-    BOOL_TYPE=12
-    STRING_TYPE=13
-    PLUS=14
-    MINUS=15
-    STAR=16
-    DIVISON=17
-    MODULO=18
-    EQUALS=19
-    UNEQUAL=20
-    LESS=21
-    GREATER=22
-    LESSEQUAL=23
-    GREATEREQUAL=24
-    AND=25
-    OR=26
-    NOT=27
-    INTEGER=28
-    FLOAT=29
-    BOOL=30
-    STRING=31
-    NL=32
-    LB=33
-    RB=34
-    CLB=35
-    CRB=36
-    COMMA=37
-    DOT=38
-    SEMICOLON=39
-    IS=40
-    WHITESPACE=41
-    COMMENT=42
-    IDENTIFIER=43
+    IF=6
+    ELSE=7
+    FOR=8
+    INT_TYPE=9
+    FLOAT_TYPE=10
+    BOOL_TYPE=11
+    STRING_TYPE=12
+    PLUS=13
+    MINUS=14
+    STAR=15
+    DIVISON=16
+    MODULO=17
+    EQUALS=18
+    UNEQUAL=19
+    LESS=20
+    GREATER=21
+    LESSEQUAL=22
+    GREATEREQUAL=23
+    AND=24
+    OR=25
+    NOT=26
+    INTEGER=27
+    FLOAT=28
+    BOOL=29
+    STRING=30
+    NL=31
+    LB=32
+    RB=33
+    CLB=34
+    CRB=35
+    COMMA=36
+    DOT=37
+    SEMICOLON=38
+    ASSIGN=39
+    WHITESPACE=40
+    COMMENT=41
+    IDENTIFIER=42
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -238,12 +246,14 @@ class GoParser ( GoASTParser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.ast = None
+            self._IDENTIFIER = None # Token
 
         def PACKAGE(self):
             return self.getToken(GoParser.PACKAGE, 0)
 
-        def MAIN(self):
-            return self.getToken(GoParser.MAIN, 0)
+        def IDENTIFIER(self):
+            return self.getToken(GoParser.IDENTIFIER, 0)
 
         def NL(self, i:int=None):
             if i is None:
@@ -251,8 +261,8 @@ class GoParser ( GoASTParser ):
             else:
                 return self.getToken(GoParser.NL, i)
 
-        def main_method(self):
-            return self.getTypedRuleContext(GoParser.Main_methodContext,0)
+        def main_function(self):
+            return self.getTypedRuleContext(GoParser.Main_functionContext,0)
 
 
         def EOF(self):
@@ -270,8 +280,8 @@ class GoParser ( GoASTParser ):
             else:
                 return self.getToken(GoParser.STRING, i)
 
-        def methods(self):
-            return self.getTypedRuleContext(GoParser.MethodsContext,0)
+        def functions(self):
+            return self.getTypedRuleContext(GoParser.FunctionsContext,0)
 
 
         def getRuleIndex(self):
@@ -284,6 +294,12 @@ class GoParser ( GoASTParser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitProgram" ):
                 listener.exitProgram(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitProgram" ):
+                return visitor.visitProgram(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -298,44 +314,48 @@ class GoParser ( GoASTParser ):
             self.state = 36
             self.match(GoParser.PACKAGE)
             self.state = 37
-            self.match(GoParser.MAIN)
+            localctx._IDENTIFIER = self.match(GoParser.IDENTIFIER)
             self.state = 38
+            if not (None if localctx._IDENTIFIER is None else localctx._IDENTIFIER.text) == "main" :
+                from antlr4.error.Errors import FailedPredicateException
+                raise FailedPredicateException(self, "$IDENTIFIER.text == \"main\" ")
+            self.state = 39
             self.match(GoParser.NL)
-            self.state = 43
+            self.state = 44
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==5:
-                self.state = 39
-                self.match(GoParser.IMPORT)
                 self.state = 40
+                self.match(GoParser.IMPORT)
+                self.state = 41
                 self.match(GoParser.STRING)
-                self.state = 45
+                self.state = 46
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 46
-            self.match(GoParser.NL)
             self.state = 47
-            self.main_method()
-            self.state = 50
+            self.match(GoParser.NL)
+            self.state = 48
+            self.main_function()
+            self.state = 51
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
             if la_ == 1:
-                self.state = 48
-                self.match(GoParser.NL)
                 self.state = 49
-                self.methods()
+                self.match(GoParser.NL)
+                self.state = 50
+                self.functions()
 
 
-            self.state = 53
+            self.state = 54
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==32:
-                self.state = 52
+            if _la==31:
+                self.state = 53
                 self.match(GoParser.NL)
 
 
-            self.state = 55
+            self.state = 56
             self.match(GoParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
@@ -346,18 +366,19 @@ class GoParser ( GoASTParser ):
         return localctx
 
 
-    class Main_methodContext(ParserRuleContext):
+    class Main_functionContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self._IDENTIFIER = None # Token
 
         def FUNC(self):
             return self.getToken(GoParser.FUNC, 0)
 
-        def MAIN(self):
-            return self.getToken(GoParser.MAIN, 0)
+        def IDENTIFIER(self):
+            return self.getToken(GoParser.IDENTIFIER, 0)
 
         def LB(self):
             return self.getToken(GoParser.LB, 0)
@@ -386,71 +407,81 @@ class GoParser ( GoASTParser ):
                 return self.getToken(GoParser.NL, i)
 
         def getRuleIndex(self):
-            return GoParser.RULE_main_method
+            return GoParser.RULE_main_function
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterMain_method" ):
-                listener.enterMain_method(self)
+            if hasattr( listener, "enterMain_function" ):
+                listener.enterMain_function(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitMain_method" ):
-                listener.exitMain_method(self)
+            if hasattr( listener, "exitMain_function" ):
+                listener.exitMain_function(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitMain_function" ):
+                return visitor.visitMain_function(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
 
-    def main_method(self):
+    def main_function(self):
 
-        localctx = GoParser.Main_methodContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 2, self.RULE_main_method)
+        localctx = GoParser.Main_functionContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 2, self.RULE_main_function)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 57
-            self.match(GoParser.FUNC)
             self.state = 58
-            self.match(GoParser.MAIN)
+            self.match(GoParser.FUNC)
             self.state = 59
-            self.match(GoParser.LB)
+            localctx._IDENTIFIER = self.match(GoParser.IDENTIFIER)
             self.state = 60
-            self.match(GoParser.RB)
+            if not (None if localctx._IDENTIFIER is None else localctx._IDENTIFIER.text) == "main" :
+                from antlr4.error.Errors import FailedPredicateException
+                raise FailedPredicateException(self, "$IDENTIFIER.text == \"main\" ")
+            self.state = 61
+            self.match(GoParser.LB)
             self.state = 62
+            self.match(GoParser.RB)
+            self.state = 64
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if ((_la) & ~0x3f) == 0 and ((1 << _la) & 15360) != 0:
-                self.state = 61
+            if ((_la) & ~0x3f) == 0 and ((1 << _la) & 7680) != 0:
+                self.state = 63
                 self.type_()
 
 
-            self.state = 65
+            self.state = 67
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==32:
-                self.state = 64
+            if _la==31:
+                self.state = 66
                 self.match(GoParser.NL)
 
 
-            self.state = 67
-            self.match(GoParser.CLB)
             self.state = 69
+            self.match(GoParser.CLB)
+            self.state = 71
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
             if la_ == 1:
-                self.state = 68
+                self.state = 70
                 self.match(GoParser.NL)
 
 
-            self.state = 71
-            self.body()
             self.state = 73
+            self.body()
+            self.state = 75
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==32:
-                self.state = 72
+            if _la==31:
+                self.state = 74
                 self.match(GoParser.NL)
 
 
-            self.state = 75
+            self.state = 77
             self.match(GoParser.CRB)
         except RecognitionException as re:
             localctx.exception = re
@@ -461,56 +492,66 @@ class GoParser ( GoASTParser ):
         return localctx
 
 
-    class MethodsContext(ParserRuleContext):
+    class FunctionsContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.node = None
+            self._function = None # FunctionContext
+            self.funcs = None # FunctionsContext
 
-        def method(self):
-            return self.getTypedRuleContext(GoParser.MethodContext,0)
+        def function(self):
+            return self.getTypedRuleContext(GoParser.FunctionContext,0)
 
 
         def NL(self):
             return self.getToken(GoParser.NL, 0)
 
-        def methods(self):
-            return self.getTypedRuleContext(GoParser.MethodsContext,0)
+        def functions(self):
+            return self.getTypedRuleContext(GoParser.FunctionsContext,0)
 
 
         def getRuleIndex(self):
-            return GoParser.RULE_methods
+            return GoParser.RULE_functions
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterMethods" ):
-                listener.enterMethods(self)
+            if hasattr( listener, "enterFunctions" ):
+                listener.enterFunctions(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitMethods" ):
-                listener.exitMethods(self)
+            if hasattr( listener, "exitFunctions" ):
+                listener.exitFunctions(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFunctions" ):
+                return visitor.visitFunctions(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
 
-    def methods(self):
+    def functions(self):
 
-        localctx = GoParser.MethodsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 4, self.RULE_methods)
+        localctx = GoParser.FunctionsContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 4, self.RULE_functions)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 77
-            self.method()
-            self.state = 80
+            self.state = 79
+            localctx._function = self.function()
+            self.state = 82
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,7,self._ctx)
             if la_ == 1:
-                self.state = 78
+                self.state = 80
                 self.match(GoParser.NL)
-                self.state = 79
-                self.methods()
+                self.state = 81
+                localctx.funcs = self.functions()
 
 
+            localctx.node = self.func_Nodes(localctx._function.node, localctx.funcs.node)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -520,12 +561,16 @@ class GoParser ( GoASTParser ):
         return localctx
 
 
-    class MethodContext(ParserRuleContext):
+    class FunctionContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.node = None
+            self._IDENTIFIER = None # Token
+            self._type = None # TypeContext
+            self._body = None # BodyContext
 
         def FUNC(self):
             return self.getToken(GoParser.FUNC, 0)
@@ -564,80 +609,88 @@ class GoParser ( GoASTParser ):
                 return self.getToken(GoParser.NL, i)
 
         def getRuleIndex(self):
-            return GoParser.RULE_method
+            return GoParser.RULE_function
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterMethod" ):
-                listener.enterMethod(self)
+            if hasattr( listener, "enterFunction" ):
+                listener.enterFunction(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitMethod" ):
-                listener.exitMethod(self)
+            if hasattr( listener, "exitFunction" ):
+                listener.exitFunction(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFunction" ):
+                return visitor.visitFunction(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
 
-    def method(self):
+    def function(self):
 
-        localctx = GoParser.MethodContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 6, self.RULE_method)
+        localctx = GoParser.FunctionContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 6, self.RULE_function)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 82
-            self.match(GoParser.FUNC)
-            self.state = 83
-            self.match(GoParser.IDENTIFIER)
-            self.state = 84
-            self.match(GoParser.LB)
             self.state = 86
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if _la==43:
-                self.state = 85
-                self.func_args()
-
-
+            self.match(GoParser.FUNC)
+            self.state = 87
+            localctx._IDENTIFIER = self.match(GoParser.IDENTIFIER)
             self.state = 88
-            self.match(GoParser.RB)
+            self.match(GoParser.LB)
             self.state = 90
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if ((_la) & ~0x3f) == 0 and ((1 << _la) & 15360) != 0:
+            if _la==42:
                 self.state = 89
-                self.type_()
+                self.func_args()
 
 
-            self.state = 93
+            self.state = 92
+            self.match(GoParser.RB)
+            self.state = 94
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==32:
-                self.state = 92
-                self.match(GoParser.NL)
+            if ((_la) & ~0x3f) == 0 and ((1 << _la) & 7680) != 0:
+                self.state = 93
+                localctx._type = self.type_()
 
 
-            self.state = 95
-            self.match(GoParser.CLB)
             self.state = 97
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,11,self._ctx)
-            if la_ == 1:
+            _la = self._input.LA(1)
+            if _la==31:
                 self.state = 96
                 self.match(GoParser.NL)
 
 
             self.state = 99
-            self.body()
+            self.match(GoParser.CLB)
             self.state = 101
             self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if _la==32:
+            la_ = self._interp.adaptivePredict(self._input,11,self._ctx)
+            if la_ == 1:
                 self.state = 100
                 self.match(GoParser.NL)
 
 
             self.state = 103
+            localctx._body = self.body()
+            self.state = 105
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==31:
+                self.state = 104
+                self.match(GoParser.NL)
+
+
+            self.state = 107
             self.match(GoParser.CRB)
+            localctx.node = self.funcNodes((None if localctx._IDENTIFIER is None else localctx._IDENTIFIER.text),(None if localctx._type is None else self._input.getText(localctx._type.start,localctx._type.stop)),localctx._body.node)
+            		
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -653,10 +706,17 @@ class GoParser ( GoASTParser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.node = None
 
         def declarations(self):
             return self.getTypedRuleContext(GoParser.DeclarationsContext,0)
 
+
+        def NL(self, i:int=None):
+            if i is None:
+                return self.getTokens(GoParser.NL)
+            else:
+                return self.getToken(GoParser.NL, i)
 
         def statements(self):
             return self.getTypedRuleContext(GoParser.StatementsContext,0)
@@ -673,6 +733,12 @@ class GoParser ( GoASTParser ):
             if hasattr( listener, "exitBody" ):
                 listener.exitBody(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBody" ):
+                return visitor.visitBody(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -683,19 +749,32 @@ class GoParser ( GoASTParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 106
+            self.state = 113
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==1:
-                self.state = 105
+                self.state = 110
                 self.declarations()
+                self.state = 111
+                self.match(GoParser.NL)
 
 
-            self.state = 109
+            self.state = 118
+            self._errHandler.sync(self)
+            _alt = self._interp.adaptivePredict(self._input,14,self._ctx)
+            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                if _alt==1:
+                    self.state = 115
+                    self.match(GoParser.NL) 
+                self.state = 120
+                self._errHandler.sync(self)
+                _alt = self._interp.adaptivePredict(self._input,14,self._ctx)
+
+            self.state = 122
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if ((_la) & ~0x3f) == 0 and ((1 << _la) & 8830452761220) != 0:
-                self.state = 108
+            if ((_la) & ~0x3f) == 0 and ((1 << _la) & 4415226380612) != 0:
+                self.state = 121
                 self.statements()
 
 
@@ -745,6 +824,12 @@ class GoParser ( GoASTParser ):
             if hasattr( listener, "exitFunc_args" ):
                 listener.exitFunc_args(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFunc_args" ):
+                return visitor.visitFunc_args(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -755,21 +840,21 @@ class GoParser ( GoASTParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 111
+            self.state = 124
             self.match(GoParser.IDENTIFIER)
-            self.state = 112
+            self.state = 125
             self.type_()
-            self.state = 118
+            self.state = 131
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==37:
-                self.state = 113
+            while _la==36:
+                self.state = 126
                 self.match(GoParser.COMMA)
-                self.state = 114
+                self.state = 127
                 self.match(GoParser.IDENTIFIER)
-                self.state = 115
+                self.state = 128
                 self.type_()
-                self.state = 120
+                self.state = 133
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -812,6 +897,12 @@ class GoParser ( GoASTParser ):
             if hasattr( listener, "exitType" ):
                 listener.exitType(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitType" ):
+                return visitor.visitType(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -822,9 +913,9 @@ class GoParser ( GoASTParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 121
+            self.state = 134
             _la = self._input.LA(1)
-            if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 15360) != 0):
+            if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 7680) != 0):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -867,6 +958,12 @@ class GoParser ( GoASTParser ):
             if hasattr( listener, "exitDeclarations" ):
                 listener.exitDeclarations(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitDeclarations" ):
+                return visitor.visitDeclarations(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -875,25 +972,23 @@ class GoParser ( GoASTParser ):
         localctx = GoParser.DeclarationsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 14, self.RULE_declarations)
         try:
-            self.state = 130
+            self.state = 141
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,16,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,17,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 123
+                self.state = 136
                 self.declaration()
-                self.state = 124
+                self.state = 137
                 self.match(GoParser.NL)
-                self.state = 125
+                self.state = 138
                 self.declarations()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 127
+                self.state = 140
                 self.declaration()
-                self.state = 128
-                self.match(GoParser.NL)
                 pass
 
 
@@ -923,8 +1018,8 @@ class GoParser ( GoASTParser ):
             return self.getTypedRuleContext(GoParser.TypeContext,0)
 
 
-        def IS(self):
-            return self.getToken(GoParser.IS, 0)
+        def ASSIGN(self):
+            return self.getToken(GoParser.ASSIGN, 0)
 
         def expr(self):
             return self.getTypedRuleContext(GoParser.ExprContext,0)
@@ -941,6 +1036,12 @@ class GoParser ( GoASTParser ):
             if hasattr( listener, "exitDeclaration" ):
                 listener.exitDeclaration(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitDeclaration" ):
+                return visitor.visitDeclaration(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -950,15 +1051,15 @@ class GoParser ( GoASTParser ):
         self.enterRule(localctx, 16, self.RULE_declaration)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 132
+            self.state = 143
             self.match(GoParser.VAR)
-            self.state = 133
+            self.state = 144
             self.match(GoParser.IDENTIFIER)
-            self.state = 134
+            self.state = 145
             self.type_()
-            self.state = 135
-            self.match(GoParser.IS)
-            self.state = 136
+            self.state = 146
+            self.match(GoParser.ASSIGN)
+            self.state = 147
             self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -998,6 +1099,12 @@ class GoParser ( GoASTParser ):
             if hasattr( listener, "exitStatements" ):
                 listener.exitStatements(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitStatements" ):
+                return visitor.visitStatements(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1006,25 +1113,23 @@ class GoParser ( GoASTParser ):
         localctx = GoParser.StatementsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 18, self.RULE_statements)
         try:
-            self.state = 145
+            self.state = 154
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,17,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 138
+                self.state = 149
                 self.statement()
-                self.state = 139
+                self.state = 150
                 self.match(GoParser.NL)
-                self.state = 140
+                self.state = 151
                 self.statements()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 142
+                self.state = 153
                 self.statement()
-                self.state = 143
-                self.match(GoParser.NL)
                 pass
 
 
@@ -1082,6 +1187,12 @@ class GoParser ( GoASTParser ):
             if hasattr( listener, "exitStatement" ):
                 listener.exitStatement(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitStatement" ):
+                return visitor.visitStatement(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1090,44 +1201,44 @@ class GoParser ( GoASTParser ):
         localctx = GoParser.StatementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 20, self.RULE_statement)
         try:
-            self.state = 154
+            self.state = 163
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 147
+                self.state = 156
                 self.assignment()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 148
+                self.state = 157
                 self.block_stmt()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 149
+                self.state = 158
                 self.if_control()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 150
+                self.state = 159
                 self.for_control()
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 151
+                self.state = 160
                 self.func_call()
                 pass
 
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 152
+                self.state = 161
                 self.match(GoParser.RETURN)
-                self.state = 153
+                self.state = 162
                 self.expr(0)
                 pass
 
@@ -1151,10 +1262,6 @@ class GoParser ( GoASTParser ):
         def CLB(self):
             return self.getToken(GoParser.CLB, 0)
 
-        def statements(self):
-            return self.getTypedRuleContext(GoParser.StatementsContext,0)
-
-
         def CRB(self):
             return self.getToken(GoParser.CRB, 0)
 
@@ -1163,6 +1270,10 @@ class GoParser ( GoASTParser ):
                 return self.getTokens(GoParser.NL)
             else:
                 return self.getToken(GoParser.NL, i)
+
+        def statements(self):
+            return self.getTypedRuleContext(GoParser.StatementsContext,0)
+
 
         def getRuleIndex(self):
             return GoParser.RULE_block_stmt
@@ -1175,6 +1286,12 @@ class GoParser ( GoASTParser ):
             if hasattr( listener, "exitBlock_stmt" ):
                 listener.exitBlock_stmt(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBlock_stmt" ):
+                return visitor.visitBlock_stmt(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1185,27 +1302,33 @@ class GoParser ( GoASTParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 156
+            self.state = 165
             self.match(GoParser.CLB)
-            self.state = 158
+            self.state = 167
             self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if _la==32:
-                self.state = 157
+            la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
+            if la_ == 1:
+                self.state = 166
                 self.match(GoParser.NL)
 
 
-            self.state = 160
-            self.statements()
-            self.state = 162
+            self.state = 170
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==32:
-                self.state = 161
+            if ((_la) & ~0x3f) == 0 and ((1 << _la) & 4415226380612) != 0:
+                self.state = 169
+                self.statements()
+
+
+            self.state = 173
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==31:
+                self.state = 172
                 self.match(GoParser.NL)
 
 
-            self.state = 164
+            self.state = 175
             self.match(GoParser.CRB)
         except RecognitionException as re:
             localctx.exception = re
@@ -1226,8 +1349,8 @@ class GoParser ( GoASTParser ):
         def IDENTIFIER(self):
             return self.getToken(GoParser.IDENTIFIER, 0)
 
-        def IS(self):
-            return self.getToken(GoParser.IS, 0)
+        def ASSIGN(self):
+            return self.getToken(GoParser.ASSIGN, 0)
 
         def expr(self):
             return self.getTypedRuleContext(GoParser.ExprContext,0)
@@ -1244,6 +1367,12 @@ class GoParser ( GoASTParser ):
             if hasattr( listener, "exitAssignment" ):
                 listener.exitAssignment(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAssignment" ):
+                return visitor.visitAssignment(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1253,11 +1382,11 @@ class GoParser ( GoASTParser ):
         self.enterRule(localctx, 24, self.RULE_assignment)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 166
+            self.state = 177
             self.match(GoParser.IDENTIFIER)
-            self.state = 167
-            self.match(GoParser.IS)
-            self.state = 168
+            self.state = 178
+            self.match(GoParser.ASSIGN)
+            self.state = 179
             self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1321,6 +1450,12 @@ class GoParser ( GoASTParser ):
             if hasattr( listener, "exitIf_control" ):
                 listener.exitIf_control(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitIf_control" ):
+                return visitor.visitIf_control(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1330,132 +1465,132 @@ class GoParser ( GoASTParser ):
         self.enterRule(localctx, 26, self.RULE_if_control)
         self._la = 0 # Token type
         try:
-            self.state = 219
+            self.state = 230
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,33,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,35,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 170
+                self.state = 181
                 self.match(GoParser.IF)
-                self.state = 171
+                self.state = 182
                 self.expr(0)
-                self.state = 173
+                self.state = 184
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==32:
-                    self.state = 172
+                if _la==31:
+                    self.state = 183
                     self.match(GoParser.NL)
 
 
-                self.state = 175
+                self.state = 186
                 self.match(GoParser.CLB)
-                self.state = 177
+                self.state = 188
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,22,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input,24,self._ctx)
                 if la_ == 1:
-                    self.state = 176
+                    self.state = 187
                     self.match(GoParser.NL)
 
 
-                self.state = 180
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-                if ((_la) & ~0x3f) == 0 and ((1 << _la) & 8830452761220) != 0:
-                    self.state = 179
-                    self.statements()
-
-
-                self.state = 183
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-                if _la==32:
-                    self.state = 182
-                    self.match(GoParser.NL)
-
-
-                self.state = 185
-                self.match(GoParser.CRB)
-                self.state = 187
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-                if _la==32:
-                    self.state = 186
-                    self.match(GoParser.NL)
-
-
-                self.state = 189
-                self.match(GoParser.ELSE)
                 self.state = 191
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==32:
+                if ((_la) & ~0x3f) == 0 and ((1 << _la) & 4415226380612) != 0:
                     self.state = 190
-                    self.match(GoParser.NL)
-
-
-                self.state = 193
-                self.match(GoParser.CLB)
-                self.state = 195
-                self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,27,self._ctx)
-                if la_ == 1:
-                    self.state = 194
-                    self.match(GoParser.NL)
-
-
-                self.state = 198
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-                if ((_la) & ~0x3f) == 0 and ((1 << _la) & 8830452761220) != 0:
-                    self.state = 197
                     self.statements()
 
 
-                self.state = 201
+                self.state = 194
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==32:
-                    self.state = 200
+                if _la==31:
+                    self.state = 193
                     self.match(GoParser.NL)
 
 
-                self.state = 203
+                self.state = 196
+                self.match(GoParser.CRB)
+                self.state = 198
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if _la==31:
+                    self.state = 197
+                    self.match(GoParser.NL)
+
+
+                self.state = 200
+                self.match(GoParser.ELSE)
+                self.state = 202
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if _la==31:
+                    self.state = 201
+                    self.match(GoParser.NL)
+
+
+                self.state = 204
+                self.match(GoParser.CLB)
+                self.state = 206
+                self._errHandler.sync(self)
+                la_ = self._interp.adaptivePredict(self._input,29,self._ctx)
+                if la_ == 1:
+                    self.state = 205
+                    self.match(GoParser.NL)
+
+
+                self.state = 209
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if ((_la) & ~0x3f) == 0 and ((1 << _la) & 4415226380612) != 0:
+                    self.state = 208
+                    self.statements()
+
+
+                self.state = 212
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if _la==31:
+                    self.state = 211
+                    self.match(GoParser.NL)
+
+
+                self.state = 214
                 self.match(GoParser.CRB)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 205
+                self.state = 216
                 self.match(GoParser.IF)
-                self.state = 206
+                self.state = 217
                 self.expr(0)
-                self.state = 208
+                self.state = 219
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==32:
-                    self.state = 207
+                if _la==31:
+                    self.state = 218
                     self.match(GoParser.NL)
 
 
-                self.state = 210
+                self.state = 221
                 self.match(GoParser.CLB)
-                self.state = 212
+                self.state = 223
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==32:
-                    self.state = 211
+                if _la==31:
+                    self.state = 222
                     self.match(GoParser.NL)
 
 
-                self.state = 215
+                self.state = 226
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if ((_la) & ~0x3f) == 0 and ((1 << _la) & 8830452761220) != 0:
-                    self.state = 214
+                if ((_la) & ~0x3f) == 0 and ((1 << _la) & 4415226380612) != 0:
+                    self.state = 225
                     self.statements()
 
 
-                self.state = 217
+                self.state = 228
                 self.match(GoParser.CRB)
                 pass
 
@@ -1510,6 +1645,12 @@ class GoParser ( GoASTParser ):
             if hasattr( listener, "exitFor_control" ):
                 listener.exitFor_control(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFor_control" ):
+                return visitor.visitFor_control(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1520,45 +1661,45 @@ class GoParser ( GoASTParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 221
+            self.state = 232
             self.match(GoParser.FOR)
-            self.state = 222
+            self.state = 233
             self.expr(0)
-            self.state = 224
+            self.state = 235
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==32:
-                self.state = 223
+            if _la==31:
+                self.state = 234
                 self.match(GoParser.NL)
 
 
-            self.state = 226
+            self.state = 237
             self.match(GoParser.CLB)
-            self.state = 228
+            self.state = 239
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,35,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,37,self._ctx)
             if la_ == 1:
-                self.state = 227
+                self.state = 238
                 self.match(GoParser.NL)
 
 
-            self.state = 231
+            self.state = 242
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if ((_la) & ~0x3f) == 0 and ((1 << _la) & 8830452761220) != 0:
-                self.state = 230
+            if ((_la) & ~0x3f) == 0 and ((1 << _la) & 4415226380612) != 0:
+                self.state = 241
                 self.statements()
 
 
-            self.state = 234
+            self.state = 245
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==32:
-                self.state = 233
+            if _la==31:
+                self.state = 244
                 self.match(GoParser.NL)
 
 
-            self.state = 236
+            self.state = 247
             self.match(GoParser.CRB)
         except RecognitionException as re:
             localctx.exception = re
@@ -1618,6 +1759,12 @@ class GoParser ( GoASTParser ):
             if hasattr( listener, "exitFunc_call" ):
                 listener.exitFunc_call(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFunc_call" ):
+                return visitor.visitFunc_call(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1628,37 +1775,37 @@ class GoParser ( GoASTParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 238
+            self.state = 249
             self.match(GoParser.IDENTIFIER)
-            self.state = 243
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while _la==38:
-                self.state = 239
-                self.match(GoParser.DOT)
-                self.state = 240
-                self.match(GoParser.IDENTIFIER)
-                self.state = 245
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-
-            self.state = 246
-            self.match(GoParser.LB)
-            self.state = 247
-            self.expr(0)
-            self.state = 252
+            self.state = 254
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==37:
-                self.state = 248
-                self.match(GoParser.COMMA)
-                self.state = 249
-                self.expr(0)
-                self.state = 254
+                self.state = 250
+                self.match(GoParser.DOT)
+                self.state = 251
+                self.match(GoParser.IDENTIFIER)
+                self.state = 256
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 255
+            self.state = 257
+            self.match(GoParser.LB)
+            self.state = 258
+            self.expr(0)
+            self.state = 263
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==36:
+                self.state = 259
+                self.match(GoParser.COMMA)
+                self.state = 260
+                self.expr(0)
+                self.state = 265
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+            self.state = 266
             self.match(GoParser.RB)
         except RecognitionException as re:
             localctx.exception = re
@@ -1675,6 +1822,12 @@ class GoParser ( GoASTParser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.node = None
+            self.left = None # ExprContext
+            self._literals = None # LiteralsContext
+            self._expr = None # ExprContext
+            self.op = None # Token
+            self.right = None # ExprContext
 
         def IDENTIFIER(self):
             return self.getToken(GoParser.IDENTIFIER, 0)
@@ -1753,6 +1906,12 @@ class GoParser ( GoASTParser ):
             if hasattr( listener, "exitExpr" ):
                 listener.exitExpr(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExpr" ):
+                return visitor.visitExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
     def expr(self, _p:int=0):
@@ -1765,134 +1924,153 @@ class GoParser ( GoASTParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 267
+            self.state = 283
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,40,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,42,self._ctx)
             if la_ == 1:
-                self.state = 258
+                self.state = 269
                 self.match(GoParser.IDENTIFIER)
                 pass
 
             elif la_ == 2:
-                self.state = 259
+                self.state = 270
                 self.func_call()
                 pass
 
             elif la_ == 3:
-                self.state = 260
-                self.literals()
+                self.state = 271
+                localctx._literals = self.literals()
+                localctx.node = localctx._literals.node
                 pass
 
             elif la_ == 4:
-                self.state = 261
+                self.state = 274
                 self.match(GoParser.LB)
-                self.state = 262
-                self.expr(0)
-                self.state = 263
+                self.state = 275
+                localctx._expr = self.expr(0)
+                self.state = 276
                 self.match(GoParser.RB)
+                localctx.node = localctx._expr.node
                 pass
 
             elif la_ == 5:
-                self.state = 265
+                self.state = 279
+                localctx.op = self._input.LT(1)
                 _la = self._input.LA(1)
-                if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 134266880) != 0):
-                    self._errHandler.recoverInline(self)
+                if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 67133440) != 0):
+                    localctx.op = self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()
-                self.state = 266
-                self.expr(5)
+                self.state = 280
+                localctx._expr = self.expr(5)
+                localctx.node = self.unaryNode((None if localctx.op is None else localctx.op.text), localctx._expr.node)
                 pass
 
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 283
+            self.state = 307
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,42,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,44,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 281
+                    self.state = 305
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,41,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,43,self._ctx)
                     if la_ == 1:
                         localctx = GoParser.ExprContext(self, _parentctx, _parentState)
+                        localctx.left = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 269
+                        self.state = 285
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
-                        self.state = 270
+                        self.state = 286
                         _la = self._input.LA(1)
-                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 458752) != 0):
+                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 229376) != 0):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 271
-                        self.expr(5)
+                        self.state = 287
+                        localctx.right = localctx._expr = self.expr(5)
+                        localctx.node = self.binaryNode(localctx.left.node, (None if localctx.op is None else localctx.op.text), localctx.right.node)
+                                  		
                         pass
 
                     elif la_ == 2:
                         localctx = GoParser.ExprContext(self, _parentctx, _parentState)
+                        localctx.left = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 272
+                        self.state = 290
                         if not self.precpred(self._ctx, 3):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
-                        self.state = 273
+                        self.state = 291
+                        localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not(_la==14 or _la==15):
-                            self._errHandler.recoverInline(self)
+                        if not(_la==13 or _la==14):
+                            localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 274
-                        self.expr(4)
+                        self.state = 292
+                        localctx.right = localctx._expr = self.expr(4)
+                        localctx.node = self.binaryNode(localctx.left.node, (None if localctx.op is None else localctx.op.text), localctx.right.node)
+                                  		
                         pass
 
                     elif la_ == 3:
                         localctx = GoParser.ExprContext(self, _parentctx, _parentState)
+                        localctx.left = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 275
+                        self.state = 295
                         if not self.precpred(self._ctx, 2):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
-                        self.state = 276
+                        self.state = 296
+                        localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 33030144) != 0):
-                            self._errHandler.recoverInline(self)
+                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 16515072) != 0):
+                            localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 277
-                        self.expr(3)
+                        self.state = 297
+                        localctx.right = localctx._expr = self.expr(3)
+                        localctx.node = self.binaryNode(localctx.left.node, (None if localctx.op is None else localctx.op.text), localctx.right.node)
+                                  		
                         pass
 
                     elif la_ == 4:
                         localctx = GoParser.ExprContext(self, _parentctx, _parentState)
+                        localctx.left = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 278
+                        self.state = 300
                         if not self.precpred(self._ctx, 1):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
-                        self.state = 279
+                        self.state = 301
+                        localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not(_la==25 or _la==26):
-                            self._errHandler.recoverInline(self)
+                        if not(_la==24 or _la==25):
+                            localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 280
-                        self.expr(2)
+                        self.state = 302
+                        localctx.right = localctx._expr = self.expr(2)
+                        localctx.node = self.binaryNode(localctx.left.node, (None if localctx.op is None else localctx.op.text), localctx.right.node)
+                                  		
                         pass
 
              
-                self.state = 285
+                self.state = 309
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,42,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,44,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1909,6 +2087,7 @@ class GoParser ( GoASTParser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.node = None
             self._INTEGER = None # Token
             self._STRING = None # Token
             self._FLOAT = None # Token
@@ -1937,6 +2116,12 @@ class GoParser ( GoASTParser ):
             if hasattr( listener, "exitLiterals" ):
                 listener.exitLiterals(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLiterals" ):
+                return visitor.visitLiterals(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1945,32 +2130,32 @@ class GoParser ( GoASTParser ):
         localctx = GoParser.LiteralsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 34, self.RULE_literals)
         try:
-            self.state = 294
+            self.state = 318
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [28]:
+            if token in [27]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 286
+                self.state = 310
                 localctx._INTEGER = self.match(GoParser.INTEGER)
-                print(self.node(int((None if localctx._INTEGER is None else localctx._INTEGER.text))))
-                pass
-            elif token in [31]:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 288
-                localctx._STRING = self.match(GoParser.STRING)
-                print(self.node((None if localctx._STRING is None else localctx._STRING.text)))
-                pass
-            elif token in [29]:
-                self.enterOuterAlt(localctx, 3)
-                self.state = 290
-                localctx._FLOAT = self.match(GoParser.FLOAT)
-                print(self.node(float((None if localctx._FLOAT is None else localctx._FLOAT.text))))
+                localctx.node =self.atomNode(int((None if localctx._INTEGER is None else localctx._INTEGER.text)))
                 pass
             elif token in [30]:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 312
+                localctx._STRING = self.match(GoParser.STRING)
+                localctx.node = self.atomNode((None if localctx._STRING is None else localctx._STRING.text))
+                pass
+            elif token in [28]:
+                self.enterOuterAlt(localctx, 3)
+                self.state = 314
+                localctx._FLOAT = self.match(GoParser.FLOAT)
+                localctx.node = self.atomNode(float((None if localctx._FLOAT is None else localctx._FLOAT.text)))
+                pass
+            elif token in [29]:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 292
+                self.state = 316
                 localctx._BOOL = self.match(GoParser.BOOL)
-                print(self.node((None if localctx._BOOL is None else localctx._BOOL.text) != 'false'))
+                localctx.node = self.atomNode((None if localctx._BOOL is None else localctx._BOOL.text) != 'false')
                 pass
             else:
                 raise NoViableAltException(self)
@@ -1988,6 +2173,8 @@ class GoParser ( GoASTParser ):
     def sempred(self, localctx:RuleContext, ruleIndex:int, predIndex:int):
         if self._predicates == None:
             self._predicates = dict()
+        self._predicates[0] = self.program_sempred
+        self._predicates[1] = self.main_function_sempred
         self._predicates[16] = self.expr_sempred
         pred = self._predicates.get(ruleIndex, None)
         if pred is None:
@@ -1995,20 +2182,30 @@ class GoParser ( GoASTParser ):
         else:
             return pred(localctx, predIndex)
 
-    def expr_sempred(self, localctx:ExprContext, predIndex:int):
+    def program_sempred(self, localctx:ProgramContext, predIndex:int):
             if predIndex == 0:
+                return (None if localctx._IDENTIFIER is None else localctx._IDENTIFIER.text) == "main" 
+         
+
+    def main_function_sempred(self, localctx:Main_functionContext, predIndex:int):
+            if predIndex == 1:
+                return (None if localctx._IDENTIFIER is None else localctx._IDENTIFIER.text) == "main" 
+         
+
+    def expr_sempred(self, localctx:ExprContext, predIndex:int):
+            if predIndex == 2:
                 return self.precpred(self._ctx, 4)
          
 
-            if predIndex == 1:
+            if predIndex == 3:
                 return self.precpred(self._ctx, 3)
          
 
-            if predIndex == 2:
+            if predIndex == 4:
                 return self.precpred(self._ctx, 2)
          
 
-            if predIndex == 3:
+            if predIndex == 5:
                 return self.precpred(self._ctx, 1)
          
 

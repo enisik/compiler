@@ -6,7 +6,7 @@ func main ( ) {
 }
 
 func Fib (n int) int{
-    if n > 0 
+    if n > 0
     {
         if n <= 2 {
             return 1

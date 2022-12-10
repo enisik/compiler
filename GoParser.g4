@@ -5,26 +5,35 @@ options {
 	superClass = GoASTParser;
 }
 
-program:
-	PACKAGE MAIN NL (IMPORT STRING)* NL main_method (NL methods)? NL? EOF;
+program
+	returns[ast]:
+	PACKAGE IDENTIFIER {$IDENTIFIER.text == "main" }? NL (
+		IMPORT STRING
+	)* NL main_function (NL functions)? NL? EOF;
 
-main_method: FUNC MAIN LB RB type? NL? CLB NL? body NL? CRB;
+main_function:
+	FUNC IDENTIFIER {$IDENTIFIER.text == "main" }? LB RB type? NL? CLB NL? body NL? CRB;
 
-methods: method (NL methods)?;
+functions
+	returns[node]:
+	function (NL funcs = functions)? {$node = self.func_Nodes($function.node, $funcs.node)};
 
-method:
-	FUNC IDENTIFIER LB func_args? RB type? NL? CLB NL? body NL? CRB;
+function
+	returns[node]:
+	FUNC IDENTIFIER LB func_args? RB type? NL? CLB NL? body NL? CRB {$node = self.funcNodes($IDENTIFIER.text,$type.text,$body.node)
+		};
 
-body: declarations? statements?;
+body
+	returns[node]: (declarations NL)? NL* statements?;
 
 func_args: IDENTIFIER type (COMMA IDENTIFIER type)*;
 
 type: INT_TYPE | BOOL_TYPE | FLOAT_TYPE | STRING_TYPE;
 
-declarations: declaration NL declarations | declaration NL;
-declaration: VAR IDENTIFIER type IS expr;
+declarations: declaration NL declarations | declaration;
+declaration: VAR IDENTIFIER type ASSIGN expr;
 
-statements: statement NL statements | statement NL;
+statements: statement NL statements | statement;
 
 statement:
 	assignment
@@ -34,9 +43,9 @@ statement:
 	| func_call
 	| RETURN expr;
 
-block_stmt: CLB NL? statements NL? CRB;
+block_stmt: CLB NL? statements? NL? CRB;
 
-assignment: IDENTIFIER IS expr;
+assignment: IDENTIFIER ASSIGN expr;
 
 if_control:
 	IF expr NL? CLB NL? statements? NL? CRB NL? ELSE NL? CLB NL? statements? NL? CRB
@@ -44,7 +53,8 @@ if_control:
 
 for_control: FOR expr NL? CLB NL? statements? NL? CRB;
 
-func_call:
+func_call
+	returns[node]:
 	IDENTIFIER (DOT IDENTIFIER)* LB expr (COMMA expr)* RB;
 
 /*expr:
@@ -54,27 +64,33 @@ func_call:
  */
 
 // First has highest operator precedency and latest the lowest precedency
-expr:
+expr
+	returns[node]:
 	IDENTIFIER
 	| func_call
-	| literals
-	| LB expr RB
-	| (NOT | PLUS | MINUS) expr
-	| expr (STAR | DIVISON | MODULO) expr
-	| expr (MINUS | PLUS) expr
-	| expr (
+	| literals {$node = $literals.node}
+	| LB expr RB {$node = $expr.node}
+	| op = (NOT | PLUS | MINUS) expr {$node = self.unaryNode($op.text, $expr.node)}
+	| left = expr (STAR | DIVISON | MODULO) right = expr {$node = self.binaryNode($left.node, $op.text, $right.node)
+		}
+	| left = expr op = (MINUS | PLUS) right = expr {$node = self.binaryNode($left.node, $op.text, $right.node)
+		}
+	| left = expr op = (
 		UNEQUAL
 		| EQUALS
 		| LESS
 		| GREATER
 		| LESSEQUAL
 		| GREATEREQUAL
-	) expr
-	| expr (OR | AND) expr;
+	) right = expr {$node = self.binaryNode($left.node, $op.text, $right.node)
+		}
+	| left = expr op = (OR | AND) right = expr {$node = self.binaryNode($left.node, $op.text, $right.node)
+		};
 
-literals:
-	INTEGER {print(self.node(int($INTEGER.text)))}
-	| STRING {print(self.node($STRING.text))}
-	| FLOAT {print(self.node(float($FLOAT.text)))}
-	| BOOL {print(self.node($BOOL.text != 'false'))};
+literals
+	returns[node]:
+	INTEGER {$node =self.atomNode(int($INTEGER.text))}
+	| STRING {$node = self.atomNode($STRING.text)}
+	| FLOAT {$node = self.atomNode(float($FLOAT.text))}
+	| BOOL {$node = self.atomNode($BOOL.text != 'false')};
 
