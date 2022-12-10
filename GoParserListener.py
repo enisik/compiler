@@ -35,6 +35,15 @@ class GoParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by GoParser#method.
+    def enterMethod(self, ctx:GoParser.MethodContext):
+        pass
+
+    # Exit a parse tree produced by GoParser#method.
+    def exitMethod(self, ctx:GoParser.MethodContext):
+        pass
+
+
     # Enter a parse tree produced by GoParser#body.
     def enterBody(self, ctx:GoParser.BodyContext):
         pass
@@ -98,30 +107,21 @@ class GoParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by GoParser#expr.
-    def enterExpr(self, ctx:GoParser.ExprContext):
+    # Enter a parse tree produced by GoParser#block_stmt.
+    def enterBlock_stmt(self, ctx:GoParser.Block_stmtContext):
         pass
 
-    # Exit a parse tree produced by GoParser#expr.
-    def exitExpr(self, ctx:GoParser.ExprContext):
-        pass
-
-
-    # Enter a parse tree produced by GoParser#opt_return.
-    def enterOpt_return(self, ctx:GoParser.Opt_returnContext):
-        pass
-
-    # Exit a parse tree produced by GoParser#opt_return.
-    def exitOpt_return(self, ctx:GoParser.Opt_returnContext):
+    # Exit a parse tree produced by GoParser#block_stmt.
+    def exitBlock_stmt(self, ctx:GoParser.Block_stmtContext):
         pass
 
 
-    # Enter a parse tree produced by GoParser#literals.
-    def enterLiterals(self, ctx:GoParser.LiteralsContext):
+    # Enter a parse tree produced by GoParser#assignment.
+    def enterAssignment(self, ctx:GoParser.AssignmentContext):
         pass
 
-    # Exit a parse tree produced by GoParser#literals.
-    def exitLiterals(self, ctx:GoParser.LiteralsContext):
+    # Exit a parse tree produced by GoParser#assignment.
+    def exitAssignment(self, ctx:GoParser.AssignmentContext):
         pass
 
 
@@ -140,6 +140,33 @@ class GoParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by GoParser#for_control.
     def exitFor_control(self, ctx:GoParser.For_controlContext):
+        pass
+
+
+    # Enter a parse tree produced by GoParser#func_call.
+    def enterFunc_call(self, ctx:GoParser.Func_callContext):
+        pass
+
+    # Exit a parse tree produced by GoParser#func_call.
+    def exitFunc_call(self, ctx:GoParser.Func_callContext):
+        pass
+
+
+    # Enter a parse tree produced by GoParser#expr.
+    def enterExpr(self, ctx:GoParser.ExprContext):
+        pass
+
+    # Exit a parse tree produced by GoParser#expr.
+    def exitExpr(self, ctx:GoParser.ExprContext):
+        pass
+
+
+    # Enter a parse tree produced by GoParser#literals.
+    def enterLiterals(self, ctx:GoParser.LiteralsContext):
+        pass
+
+    # Exit a parse tree produced by GoParser#literals.
+    def exitLiterals(self, ctx:GoParser.LiteralsContext):
         pass
 
 

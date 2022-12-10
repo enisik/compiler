@@ -2,61 +2,79 @@ parser grammar GoParser;
 
 options {
 	tokenVocab = GoLexer;
+	superClass = GoASTParser;
 }
-program: PACKAGE NL IMPORT NL main_method (NL methods)? NL? EOF;
+
+program:
+	PACKAGE MAIN NL (IMPORT STRING)* NL main_method (NL methods)? NL? EOF;
 
 main_method: FUNC MAIN LB RB type? NL? CLB NL? body NL? CRB;
 
-methods:
-	FUNC IDENTIFIER LB func_args? RB type? NL? CLB NL? body NL? CRB (
-		NL methods
-	)?;
+methods: method (NL methods)?;
 
-body: declarations? statements? opt_return?;
-func_args: IDENTIFIER type | IDENTIFIER type COMMA func_args;
+method:
+	FUNC IDENTIFIER LB func_args? RB type? NL? CLB NL? body NL? CRB;
+
+body: declarations? statements?;
+
+func_args: IDENTIFIER type (COMMA IDENTIFIER type)*;
+
 type: INT_TYPE | BOOL_TYPE | FLOAT_TYPE | STRING_TYPE;
 
-declarations: declaration NL | declaration NL declaration;
-declaration: VAR IDENTIFIER type IS expr | IDENTIFIER IS expr;
+declarations: declaration NL declarations | declaration NL;
+declaration: VAR IDENTIFIER type IS expr;
 
-statements:
-	statement NL statements
-	| CLB statements CRB NL
-	| statement NL;
+statements: statement NL statements | statement NL;
 
 statement:
-	VAR IS expr
-	| IF expr CLB NL? body CRB
-	| PRINT LB expr RB;
+	assignment
+	| block_stmt
+	| if_control
+	| for_control
+	| func_call
+	| RETURN expr;
 
-expr:
-	expr OR expr
-	| expr AND expr
-	| expr UNEQUAL expr
-	| expr EQUALS expr
-	| expr LESS expr
-	| expr GREATER expr
-	| expr LESSEQUAL expr
-	| expr GREATEREQUAL expr
-	| expr MINUS expr
-	| expr PLUS expr
-	| expr STAR expr
-	| expr DIVISON expr
-	| expr MODULO expr
-	| NOT expr
-	| PLUS expr
-	| MINUS expr
-	| LB expr RB
-	| IDENTIFIER LB expr RB
-	| literals
-	| IDENTIFIER;
+block_stmt: CLB NL? statements NL? CRB;
 
-opt_return: RETURN expr;
-
-literals: INTEGER | STRING | FLOAT | BOOL;
+assignment: IDENTIFIER IS expr;
 
 if_control:
-	IF expr CLB NL? body CRB NL? ELSE NL? CLB NL? body CRB
-	| IF expr CLB NL? body CRB;
+	IF expr NL? CLB NL? statements? NL? CRB NL? ELSE NL? CLB NL? statements? NL? CRB
+	| IF expr NL? CLB NL? statements? CRB;
 
-for_control: FOR expr CLB statements CRB;
+for_control: FOR expr NL? CLB NL? statements? NL? CRB;
+
+func_call:
+	IDENTIFIER (DOT IDENTIFIER)* LB expr (COMMA expr)* RB;
+
+/*expr:
+ expr (OR | AND) expr | expr ( UNEQUAL | EQUALS | LESS | GREATER | LESSEQUAL | GREATEREQUAL ) expr |
+ expr (MINUS | PLUS) expr | expr (STAR | DIVISON | MODULO) expr | (NOT | PLUS | MINUS) expr | LB
+ expr RB | IDENTIFIER LB expr RB | lit = literals | func_call | IDENTIFIER;
+ */
+
+// First has highest operator precedency and latest the lowest precedency
+expr:
+	IDENTIFIER
+	| func_call
+	| literals
+	| LB expr RB
+	| (NOT | PLUS | MINUS) expr
+	| expr (STAR | DIVISON | MODULO) expr
+	| expr (MINUS | PLUS) expr
+	| expr (
+		UNEQUAL
+		| EQUALS
+		| LESS
+		| GREATER
+		| LESSEQUAL
+		| GREATEREQUAL
+	) expr
+	| expr (OR | AND) expr;
+
+literals:
+	INTEGER {print(self.node(int($INTEGER.text)))}
+	| STRING {print(self.node($STRING.text))}
+	| FLOAT {print(self.node(float($FLOAT.text)))}
+	| BOOL {print(self.node($BOOL.text != 'false'))};
+

@@ -5,7 +5,7 @@ import sys
 from antlr4 import *
 from GoLexer import GoLexer
 from GoParser import GoParser
-import antlr4
+from GoASTParser import GoASTParser
 
 
 def main(argv):
@@ -19,6 +19,9 @@ def main(argv):
 
 if __name__ == '__main__':
     tree, stream = main(sys.argv)
+
     # for token in stream.tokens:
-    # print(token)
+    #    print(token)
+    #a = ASTGenerator.Node('a')
+    # print(a.value)
     print(tree.toStringTree())

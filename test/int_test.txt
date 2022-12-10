@@ -1,0 +1,9 @@
+package main
+
+import "fmt"
+
+func main ( ) {
+    var a int = 5
+    var b bool = false
+    var a int = 10
+    }

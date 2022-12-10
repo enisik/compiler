@@ -1,5 +1,29 @@
 lexer grammar GoLexer;
 
+// KEYWORDS
+
+VAR: 'var';
+RETURN: 'return';
+FUNC: 'func';
+PACKAGE: 'package';
+IMPORT: 'import';
+MAIN: 'main';
+
+// OTHER KEYWORDS
+
+// Control
+IF: 'if';
+ELSE: 'else';
+FOR: 'for';
+
+// Types
+INT_TYPE: 'int';
+FLOAT_TYPE: 'float64';
+BOOL_TYPE: 'bool';
+STRING_TYPE: 'string';
+
+// OPERATORS
+
 // Math
 PLUS: '+';
 MINUS: '-';
@@ -20,32 +44,11 @@ AND: '&&';
 OR: '||';
 NOT: '!';
 
-// Types
-INT_TYPE: 'int';
-FLOAT_TYPE: 'float';
-BOOL_TYPE: 'bool';
-STRING_TYPE: 'string';
-
-// Control
-IF: 'if';
-ELSE: 'else';
-FOR: 'for';
-
 // Literals
 INTEGER: [0-9]+;
-FLOAT: [0-9]+ .[0-9]+;
+FLOAT: [0-9]+ '.' [0-9]+;
 BOOL: 'true' | 'false';
-STRING: '"' [.]* '"';
-
-VAR: 'var';
-RETURN: 'return';
-
-FUNC: 'func';
-PACKAGE: 'package main';
-IMPORT: 'import "fmt"';
-MAIN: 'main';
-
-PRINT: 'fmt.Println';
+STRING: '"' .+? '"';
 
 NL: [\r\n]+;
 LB: '(';
@@ -53,9 +56,10 @@ RB: ')';
 CLB: '{';
 CRB: '}';
 COMMA: ',';
+DOT: '.';
 SEMICOLON: ';';
 IS: '=';
 
-WHITESPACE: [ ]+ -> skip;
+WHITESPACE: [ \t]+ -> skip;
+COMMENT: ('//' .*? '\n' | '/*' .*? '*/') -> skip;
 IDENTIFIER: [a-zA-Z][_a-zA-Z0-9]*;
-COMMENT: '//' [.]* '\n' | '/*' [.]* '*/';
