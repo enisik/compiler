@@ -7,6 +7,6 @@ func main() {
 
    for a < 20 {
       a = a + 1
-      fmt.Printf("value of a: %d\n", a)
+      fmt.Println("value of a: %d\n")
    }
 }

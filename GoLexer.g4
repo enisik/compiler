@@ -47,7 +47,7 @@ NOT: '!';
 INTEGER: [0-9]+;
 FLOAT: [0-9]+ '.' [0-9]+;
 BOOL: 'true' | 'false';
-STRING: '"' .+? '"';
+STRING: '"' .+? '"' | '""';
 
 NL: [\r\n]+;
 LB: '(';

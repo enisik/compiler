@@ -19,7 +19,7 @@ $global_scope = global_scope};
 main_function
 	returns[node]:
 	FUNC IDENTIFIER {$IDENTIFIER.text == "main" }? LB RB NL? CLB NL? body NL? CRB {$node = self.funcNode('main',None, $body.node)
-global_scope['main'] = (None,'VOID')};
+global_scope['main'] = (None,None)};
 
 functions
 	returns[node]:
@@ -27,9 +27,11 @@ functions
 };
 
 function
-	returns[node, args]:
-	FUNC IDENTIFIER LB (func_args {$args = $func_args.args})? RB type? NL? CLB NL? body NL? CRB {$node = self.funcNode($IDENTIFIER.text,$type.text,$body.node)
-global_scope[$IDENTIFIER.text] = ($args,$type.text)};
+	returns[node, args, ret]:
+	FUNC IDENTIFIER LB (func_args {$args = $func_args.args})? RB (
+		type {$ret = $type.text}
+	)? NL? CLB NL? body NL? CRB {$node = self.funcNode($IDENTIFIER.text,$ret,$body.node)
+global_scope[$IDENTIFIER.text] = ($args,$ret)};
 
 body
 	returns[node, decl, stat]: (
@@ -54,7 +56,7 @@ declarations
 	returns[node]:
 	declaration NL declarations {$node = self.blockNode($declaration.node, $declarations.node, 'DECL')
 }
-	| declaration {$node = $declaration.node};
+	| declaration {$node = self.blockNode($declaration.node, None, 'DECL')};
 
 declaration
 	returns[node]:
@@ -64,7 +66,7 @@ declaration
 statements
 	returns[node]:
 	statement NL statements {$node = self.blockNode($statement.node, $statements.node, 'STMT')}
-	| statement {$node = $statement.node};
+	| statement {$node = self.blockNode($statement.node, None, 'STMT')};
 
 statement
 	returns[node]:
@@ -73,7 +75,7 @@ statement
 	| if_control {$node = $if_control.node}
 	| for_loop {$node = $for_loop.node}
 	| func_call {$node = $func_call.node}
-	| RETURN expr {$node = self.returnNode($expr.node)};
+	| RETURN (expr {$node= $expr.node})? {$node = self.returnNode($node)};
 
 block_stmt
 	returns[node]:
@@ -99,22 +101,23 @@ for_loop
 func_call
 	returns[node, id, args]:
 	IDENTIFIER {$id = $IDENTIFIER.text} (
-		DOT IDENTIFIER {$id += $IDENTIFIER.text}
+		DOT IDENTIFIER {$id += "." + $IDENTIFIER.text}
 	)* LB (
 		expr {$args = [$expr.node]} (
 			COMMA expr {$args.append($expr.node)}
 		)*
 	)? RB {$node=self.funcCallNode($id,$args)};
 
-// First has highest operator precedency and latest the lowest precedency
+// First has highest operator precedency and latest the lowest precedency // By default, ANTLR
+// associates operators left to right
 expr
 	returns[node]:
-	IDENTIFIER {$node= self.atomNode($IDENTIFIER.text,None)}
-	| func_call
+	IDENTIFIER {$node= self.idNode($IDENTIFIER.text,None)}
+	| func_call {$node = $func_call.node}
 	| literals {$node = $literals.node}
 	| LB expr RB {$node = $expr.node}
 	| op = (NOT | PLUS | MINUS) expr {$node = self.unaryNode($op.text, $expr.node)}
-	| left = expr (STAR | DIVISON | MODULO) right = expr {$node = self.binaryNode($left.node, $op.text, $right.node)
+	| left = expr op = (STAR | DIVISON | MODULO) right = expr {$node = self.binaryNode($left.node, $op.text, $right.node)
 		}
 	| left = expr op = (MINUS | PLUS) right = expr {$node = self.binaryNode($left.node, $op.text, $right.node)
 		}
