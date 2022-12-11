@@ -1,7 +1,10 @@
 package main
 import "fmt"
-func main ( ) {
+
+func main () {
     if n > 0 {
-        lol = 2
+        return 0
+    } else {
+
     }
 }

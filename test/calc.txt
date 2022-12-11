@@ -2,10 +2,9 @@ package main
 
 import "fmt"
 
-func main() int {
+func main() {
     var a int = 3
     var b int = 9
-	var c int = 0
-	c = 5+ (-2)
-	return c
+	b = 5+ (-2)
+	return b
 }

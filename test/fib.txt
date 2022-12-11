@@ -3,6 +3,7 @@ import "fmt"
 func main ( ) {
     fmt.Println(Fib(5))
     fmt.Println(Fib(10))
+    fmt.Println(Fib(7))
 }
 
 func Fib (n int) int{
