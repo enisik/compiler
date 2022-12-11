@@ -22,7 +22,8 @@ def main(argv):
 
     # print("START:\tTYPCHECKING")
     # print(tree.ast)
-    print(tree.global_scope)
+    # print(tree.global_scope)
+    parser.typeChecking(tree)
     # for token in stream.tokens:
     #    print(token)
     #a = ASTGenerator.Node('a')

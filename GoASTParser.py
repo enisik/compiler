@@ -18,11 +18,12 @@ class GoASTParser(Parser):
                     return f"Node({self.value}, {self.args})"
                 return f"Node({self.value}, {self.type})"
 
-    def typeChecking(self, ast):
+    def typeChecking(self, tree):
+        ast = tree.ast
         if ast == None:
             print("Typechecking failed!")
             return False
-
+        print("Global Scope:\t {tree.global_scope}")
         return True
 
     def atomNode(self, val, val_type):
