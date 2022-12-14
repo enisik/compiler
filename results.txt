@@ -1,0 +1,2357 @@
+=============================================
+valid codesnipsets
+=============================================
+add_int.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+assign_bool.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+assign_bool_func_call.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 125, in check_decl
+    right_side_type = getType(right_side, scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 65, in getType
+    if (node.args is None and not len(func_args) == 0) or len(func_args) != len(node.args):
+TypeError: object of type 'NoneType' has no len()
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+assign_float64_func_call.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 125, in check_decl
+    right_side_type = getType(right_side, scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 65, in getType
+    if (node.args is None and not len(func_args) == 0) or len(func_args) != len(node.args):
+TypeError: object of type 'NoneType' has no len()
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+assign_int.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+assign_int_compare.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 129, in check_decl
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+assign_int_compare2.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+assign_int_func_call.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 125, in check_decl
+    right_side_type = getType(right_side, scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 65, in getType
+    if (node.args is None and not len(func_args) == 0) or len(func_args) != len(node.args):
+TypeError: object of type 'NoneType' has no len()
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+assign_int_to_float64.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+assign_neg_float64.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+assign_neg_int.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+assign_string.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+assign_string2.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+assign_string3.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+assign_string_func_call.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 125, in check_decl
+    right_side_type = getType(right_side, scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 65, in getType
+    if (node.args is None and not len(func_args) == 0) or len(func_args) != len(node.args):
+TypeError: object of type 'NoneType' has no len()
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+call_float64_func_with_int_arg.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 125, in check_decl
+    right_side_type = getType(right_side, scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 69, in getType
+    raise FunctionArgumentMismatch
+GoASTParser.FunctionArgumentMismatch
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+call_in_for.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 168, in check_stmts
+    returns = check_stmts(for_stmt, scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 145, in check_stmts
+    right_side = getType(stmt.children[0], scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 65, in getType
+    if (node.args is None and not len(func_args) == 0) or len(func_args) != len(node.args):
+TypeError: object of type 'NoneType' has no len()
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+call_in_if.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 154, in check_stmts
+    returns = check_stmts(stmts1, scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 145, in check_stmts
+    right_side = getType(stmt.children[0], scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 65, in getType
+    if (node.args is None and not len(func_args) == 0) or len(func_args) != len(node.args):
+TypeError: object of type 'NoneType' has no len()
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+declare_bool.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+declare_float64.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+declare_int.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+declare_string.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+double_in_for.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 165, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+double_lt_int.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 129, in check_decl
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+empty_for.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+empty_main.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_add_int.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_bool_and.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_bool_eq.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 129, in check_decl
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+expr_bool_gt.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_bool_le.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_bool_lt.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_bool_ne.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 129, in check_decl
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+expr_bool_not.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_bool_or.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_float64_add.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_float64_div.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_float64_mul.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_float64_sub.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_int_div.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_int_mod.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_int_mul.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_int_sub.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_unary_minus_int.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+expr_unary_plus_int.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+for_if.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+for_if2.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+for_with_bool_expr.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+for_with_int_expr.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+for_with_int_expr2.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+func_call.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 183, in check_stmts
+    getType(stmt, scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 65, in getType
+    if (node.args is None and not len(func_args) == 0) or len(func_args) != len(node.args):
+TypeError: object of type 'NoneType' has no len()
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+func_call_with_arg.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+if_no_else.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+if_while.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+if_while2.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+if_with_else.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+if_with_int_expr.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 151, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+if_with_int_expr2.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 151, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+if_with_string_expr.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 151, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+if_with_string_expr2.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 151, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+mulit_line_comment.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+line 9:2 extraneous input '\r\n' expecting 'func'
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+mulit_line_comment2.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+nested_calls.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 16, in main
+    tree = parser.program()
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoParser.py", line 379, in program
+    localctx.ast = self.ast(localctx._main_function.node, localctx.ast)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 291, in ast
+    node.children.append(*other.children)
+TypeError: list.append() takes exactly one argument (2 given)
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+single_line_comment.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+two_func.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+TOTAL: passed 46 tests, failed 19 tests
+
+=============================================
+valid programs
+=============================================
+celsius_to_fahrenheit.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 179, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+fahrenheit_to_celsius.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 179, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+fibonacci.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+fibonacci_recursive.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+gauss_recursive.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 154, in check_stmts
+    returns = check_stmts(stmts1, scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 151, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+gcd_iterative.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 151, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+gcd_recursive.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 151, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: True
+ FAILED the test
+
+
+hello_world.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: True
+ PASSED the test
+
+
+TOTAL: passed 3 tests, failed 5 tests
+
+=============================================
+parse errors
+=============================================
+assign_value_to_function.go
+--------------------------------------------
+
+your compilation stdout:
+PAST-GENERATING FAILED
+
+++++++++++++++
+your compilation stderr:
+line 3:0 mismatched input 'func' expecting {'import', NL}
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+comma_to_much.go
+--------------------------------------------
+
+your compilation stdout:
+PAST-GENERATING FAILED
+
+++++++++++++++
+your compilation stderr:
+line 3:0 mismatched input 'func' expecting {'import', NL}
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+comment_in_declaration.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+line 7:0 no viable alternative at input 'varaint=}'
+line 8:0 mismatched input '<EOF>' expecting {NL, '}'}
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 195, in typeChecking
+    func_scope = get_scope(func.value)
+AttributeError: 'NoneType' object has no attribute 'value'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+declaration_instead_of_expression.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+line 6:13 no viable alternative at input 'fmt.Println(var'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+float64_with_comma.go
+--------------------------------------------
+
+your compilation stdout:
+PAST-GENERATING FAILED
+
+++++++++++++++
+your compilation stderr:
+line 6:18 mismatched input ',' expecting NL
+line 7:1 mismatched input 'fmt' expecting '}'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+illegal_func_name.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+line 6:10 no viable alternative at input 'TheAnswer!'
+line 9:14 extraneous input '!' expecting '('
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+illegal_ID_name.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+line 6:11 token recognition error at: '?'
+line 7:19 token recognition error at: '?'
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 129, in check_decl
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+missing_arg_after_not.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+line 6:15 no viable alternative at input 'varbbool=!\r\n'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+missing_arg_after_unary_plus.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+line 6:17 no viable alternative at input 'variint=++++\r\n'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+missing_bracket.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+line 9:0 mismatched input '<EOF>' expecting {NL, '}'}
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 195, in typeChecking
+    func_scope = get_scope(func.value)
+AttributeError: 'NoneType' object has no attribute 'value'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+missing_bracket2.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+line 5:11 missing ')' at '{'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+missing_bracket3.go
+--------------------------------------------
+
+your compilation stdout:
+PAST-GENERATING FAILED
+
+++++++++++++++
+your compilation stderr:
+line 5:10 mismatched input '{' expecting '('
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+missing_new_line.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+line 6:16 mismatched input 'var' expecting NL
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 198, in typeChecking
+    body = func.children[0].children
+AttributeError: 'NoneType' object has no attribute 'children'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+missing_return_type.go
+--------------------------------------------
+
+your compilation stdout:
+PAST-GENERATING FAILED
+
+++++++++++++++
+your compilation stderr:
+line 3:0 mismatched input 'func' expecting {'import', NL}
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+missing_space.go
+--------------------------------------------
+
+your compilation stdout:
+PAST-GENERATING FAILED
+
+++++++++++++++
+your compilation stderr:
+line 5:0 missing 'func' at 'funcmain'
+line 5:8 rule main_function failed predicate: {$IDENTIFIER.text == "main" }?
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+none_existing_compare.go
+--------------------------------------------
+
+your compilation stdout:
+PAST-GENERATING FAILED
+
+++++++++++++++
+your compilation stderr:
+line 6:17 mismatched input '=' expecting NL
+line 7:1 mismatched input 'fmt' expecting '}'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+none_existing_type.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+line 6:7 no viable alternative at input 'varbboolean'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+none_existing_type2.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+line 6:7 no viable alternative at input 'vardfloat'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+plus_one_operator.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+line 6:16 no viable alternative at input 'variint=42+\r\n'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+string_literal.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+line 6:16 token recognition error at: '"Hallo\r\n\tfmt.Println(s)\r\n}\r\n'
+line 9:0 no viable alternative at input 'varsstring='
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 198, in typeChecking
+    body = func.children[0].children
+AttributeError: 'NoneType' object has no attribute 'children'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+wrong_if_else.go
+--------------------------------------------
+
+your compilation stdout:
+PAST-GENERATING FAILED
+
+++++++++++++++
+your compilation stderr:
+line 8:0 no viable alternative at input 'iftrue{\r\n}else\r\n}'
+line 7:3 extraneous input 'else' expecting {<EOF>, NL}
+line 8:0 no viable alternative at input '\r\n}'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+wrong_if_else2.go
+--------------------------------------------
+
+your compilation stdout:
+PAST-GENERATING FAILED
+
+++++++++++++++
+your compilation stderr:
+line 6:1 no viable alternative at input '\r\nelse'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+wrong_semicolon.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+line 6:10 no viable alternative at input 'variint;'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+wrong_space.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+line 6:7 no viable alternative at input 'variin'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+wrong_string_quote.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+line 6:16 token recognition error at: '''
+line 6:17 token recognition error at: '''
+line 6:23 token recognition error at: '''
+line 6:24 token recognition error at: '''
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 125, in check_decl
+    right_side_type = getType(right_side, scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 52, in getType
+    raise VariableNotFound
+GoASTParser.VariableNotFound
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+TOTAL: passed 25 tests, failed 0 tests
+
+=============================================
+type errors
+=============================================
+assign_bool_to_int_var.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 129, in check_decl
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+assign_bool_var_to_int_var.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 147, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+assign_float64_to_int.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 147, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+assign_int_expr_to_bool_var.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 129, in check_decl
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+assign_string_expr_to_bool_var.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 129, in check_decl
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+bool_func_to_int.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 125, in check_decl
+    right_side_type = getType(right_side, scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 65, in getType
+    if (node.args is None and not len(func_args) == 0) or len(func_args) != len(node.args):
+TypeError: object of type 'NoneType' has no len()
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+call_without_args.go
+--------------------------------------------
+
+your compilation stdout:
+PAST-GENERATING FAILED
+
+++++++++++++++
+your compilation stderr:
+line 3:0 mismatched input 'func' expecting {'import', NL}
+
+
+--------------------------------------------
+Result: False, expected: False
+ FAILED the test; parse instead of type error
+
+
+duplicate_identifier.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+
+
+--------------------------------------------
+Result: True, expected: False
+ FAILED the test
+
+
+duplicate_identifier_arg.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 179, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+missing_space2.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+line 6:10 no viable alternative at input 'variint='
+
+
+--------------------------------------------
+Result: False, expected: False
+ FAILED the test; parse instead of type error
+
+
+plus_in_bool_expr.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 129, in check_decl
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+return_without_expr.go
+--------------------------------------------
+
+your compilation stdout:
+PAST-GENERATING FAILED
+
+++++++++++++++
+your compilation stderr:
+line 3:0 mismatched input 'func' expecting {'import', NL}
+
+
+--------------------------------------------
+Result: False, expected: False
+ FAILED the test; parse instead of type error
+
+
+typo_bool.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+line 6:7 no viable alternative at input 'varb='
+
+
+--------------------------------------------
+Result: False, expected: False
+ FAILED the test; parse instead of type error
+
+
+typo_bool2.go
+--------------------------------------------
+
+your compilation stdout:
+PARSING & TYPECHECKING SUCCESSFUL
+
+++++++++++++++
+your compilation stderr:
+line 6:7 no viable alternative at input 'varb='
+
+
+--------------------------------------------
+Result: False, expected: False
+ FAILED the test; parse instead of type error
+
+
+undeclared_func_call.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 125, in check_decl
+    right_side_type = getType(right_side, scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 63, in getType
+    raise FunctionNotFound
+GoASTParser.FunctionNotFound
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+undeclared_var.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 144, in check_stmts
+    var_type = scope[stmt.value]
+KeyError: 'i'
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+wrong_compare.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 203, in typeChecking
+    check_decl(block.children, func_scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 129, in check_decl
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+wrong_func_arg.go
+--------------------------------------------
+
+your compilation stdout:
+PAST-GENERATING FAILED
+
+++++++++++++++
+your compilation stderr:
+line 3:0 mismatched input 'func' expecting {'import', NL}
+
+
+--------------------------------------------
+Result: False, expected: False
+ FAILED the test; parse instead of type error
+
+
+wrong_return_value.go
+--------------------------------------------
+
+your compilation stdout:
+PAST-GENERATING FAILED
+
+++++++++++++++
+your compilation stderr:
+line 3:0 mismatched input 'func' expecting {'import', NL}
+
+
+--------------------------------------------
+Result: False, expected: False
+ FAILED the test; parse instead of type error
+
+
+wrong_types_in_arithmetic.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 147, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+wrong_types_in_arithmetic2.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 147, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+wrong_types_in_arithmetic3.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 145, in check_stmts
+    right_side = getType(stmt.children[0], scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 57, in getType
+    return getBinaryType(node, scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 89, in getBinaryType
+    left_side = getType(node.children[0], scope)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 52, in getType
+    raise VariableNotFound
+GoASTParser.VariableNotFound
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+wrong_types_in_logic.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 147, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+wrong_types_in_logic2.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 147, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+wrong_types_in_logic3.go
+--------------------------------------------
+
+your compilation stdout:
+
+++++++++++++++
+your compilation stderr:
+Traceback (most recent call last):
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 33, in <module>
+    main(sys.argv)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\main.py", line 20, in main
+    parser.typeChecking(tree)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 205, in typeChecking
+    check_stmts(block.children, func_scope, func_return)
+  File "C:\Users\lukas\OneDrive\job\compilerbau 2022\projekt\abgaben\Ensar Isik\GoASTParser.py", line 147, in check_stmts
+    raise TypeMismatch
+GoASTParser.TypeMismatch
+
+
+--------------------------------------------
+Result: False, expected: False
+ PASSED the test
+
+
+TOTAL: passed 18 tests, failed 7 tests
+
+=============================================
+SUMMARY
+=============================================
+valid codesnipsets:  46 / 65 passed, 19 / 65 failed
+valid programs:      3 / 8 passed, 5 / 8 failed
+parse errors:        25 / 25 passed, 0 / 25 failed
+type errors:         18 / 25 passed, 7 / 25 failed
