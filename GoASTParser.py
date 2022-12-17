@@ -104,5 +104,6 @@ class GoASTParser(Parser):
         node.children.append(main)
         if other is None:
             return node
-        node.children.append(*other.children)
+        for child_node in other.children:
+            node.children.append(child_node)
         return node

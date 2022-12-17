@@ -26,9 +26,9 @@ def main(file):
     parser.addErrorListener(err_listener)
     #parser._errListener = MyErrorStrategy()
     tree = parser.program()
-    print(err_listener.errors)
    # print(f"PARSING ERRORS: {parser.")
     if tree.ast is None or len(err_listener.errors) != 0:
+        print(err_listener.errors, file=sys.stderr)
         sys.exit("----PARSING/AST-GENERATING FAILED----")
     print("----PARSING/AST-GENERATING SUCCESSFUL----")
     typeChecking(tree)

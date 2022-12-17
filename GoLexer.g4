@@ -60,5 +60,5 @@ SEMICOLON: ';';
 ASSIGN: '=';
 
 WHITESPACE: [ \t]+ -> skip;
-COMMENT: ('//' .*? '\n' | '/*' .*? '*/') -> skip;
+COMMENT: ('//' .*? '\n' | '/*' .*? '*/' NL?) -> skip;
 IDENTIFIER: [a-zA-Z][_a-zA-Z0-9]*;

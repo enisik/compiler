@@ -7,7 +7,7 @@ def main(arg):
     for filename in os.listdir(arg):
         print(filename)
         os.system(
-            f"python3 main.py -compile test/{filename}")
+            f"python3 main.py -compile {arg}/{filename}")
         print("")
     print("\nTesting Finished")
 

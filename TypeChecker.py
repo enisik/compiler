@@ -84,6 +84,10 @@ def typeChecking(tree):
                     return right_type
                 if node.value == '+' and left_type == 'STRING':
                     return right_type
+            elif left_type == 'FLOAT' and right_type == 'INT' and right_expr.is_pure:
+                return 'FLOAT'
+            elif right_type == 'FLOAT' and left_type == 'INT' and left_expr.is_pure:
+                return 'FLOAT'
 
         elif node.value in bool_ops:
             if left_type == right_type and left_type == 'BOOL':
@@ -97,7 +101,7 @@ def typeChecking(tree):
             if left_type == right_type and (left_type in numeric_type) or left_type == 'BOOL':
                 return 'BOOL'
         sys.exit(
-            f"OPERATOR MISMATCH\nLEFT: {left_expr.value}\t Operator: {node.value}\t RIGHT: {right_expr.value}")
+            f"OPERATOR MISMATCH\nLEFT: {left_expr.value} ({left_type})\t Operator: {node.value}\t RIGHT: {right_expr.value} ({right_type})")
 
     def get_scope(name):
         func_info = tree.global_scope[name]
@@ -142,7 +146,7 @@ def typeChecking(tree):
                 right_side = getType(stmt.children[0], scope)
                 if var_type != right_side:
                     sys.exit(
-                        f"TYPE MISTMATCH\nLEFT:{var_type}\tRIGHT:{right_side}")
+                        f"TYPE MISTMATCH\nLEFT: {var_type}\tRIGHT: {right_side}")
 
             elif action in ['IF', 'IF_ELSE']:
                 if getType(stmt.children[0], scope) != 'BOOL':
@@ -170,12 +174,14 @@ def typeChecking(tree):
                 right_node = stmt.children[0]
                 if right_node is None:
                     right_node_type = None
+                    right_node_is_pure = False
                 else:
-                    right_node_type = getType(stmt.children[0], scope)
+                    right_node_type = getType(right_node, scope)
+                    right_node_is_pure = right_node.is_pure
                 if right_node_type != func_return:
-
-                    sys.exit(
-                        f"RETURN ARGUMENT MISMATCH\nRETURN:{right_node.value} ({right_node_type})\tFUNCTION RETURN TYPE:{func_return}")
+                    if func_return != 'FLOAT' or not right_node_is_pure:
+                        sys.exit(
+                            f"RETURN ARGUMENT MISMATCH\nRETURN: {right_node.value} ({right_node_type})\tFUNCTION RETURN TYPE: {func_return}")
                 return True
 
             elif action == "FUNCCALL":
