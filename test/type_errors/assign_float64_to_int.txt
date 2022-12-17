@@ -3,5 +3,6 @@ package main
 import "fmt"
 
 func main(){
-    var f float64 = 42
+    var a int = 42
+    var f float64 = a
 }
