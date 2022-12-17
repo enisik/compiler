@@ -14,7 +14,7 @@ def typeChecking(tree):
             return node.type
         elif node_type == 'ID':
             if node.value not in scope:
-                sys.exit("variable not found in scope")
+                sys.exit(f"VARIABLE {node.value} NOT FOUND")
             return scope[node.value]
         elif node_type == 'UNARY':
             return getUnaryType(node, scope)
@@ -25,63 +25,79 @@ def typeChecking(tree):
             if func_name == "fmt.Println":
                 return None
             if func_name not in tree.global_scope:
-                sys.exit("function not found")
+                sys.exit(f"FUNCTION {func_name} NOT DEFINED")
             (func_args, return_type) = tree.global_scope[func_name]
             if node.args is None and func_args is None:
                 return return_type
             if node.args is None and func_args is not None:
-                sys.exit("FunctionArgumentMismatch")
+                sys.exit("FUNCTION ARGUMENT MISMATCH")
             elif node.args is not None and func_args is None:
-                sys.exit("FunctionArgumentMismatch")
+                sys.exit("FUNCTION ARGUMENT MISMATCH")
             elif len(node.args) != len(func_args):
-                sys.exit("FunctionArgumentMismatch")
+                sys.exit("FUNCTION ARGUMENT MISMATCH")
             for i in range(len(func_args)):
-                if getType(node.args[i], scope) != func_args[i][1]:
-                    sys.exit("FunctionArgumentMismatch")
+                func_arg = func_args[i][1]
+                node_arg_type = getType(node.args[i], scope)
+                if node_arg_type != func_arg:
+                    if func_arg == 'FLOAT' and node_arg_type == 'INT' and node.args[i].is_pure:
+                        continue
+                    sys.exit(
+                        f"FUNCTION ARGUMENT MISMATCH\nEXPECTED: {func_arg.value}\tGOT: {node.args[i].value}")
             return return_type
-        sys.exit("TypeMismatch")
+        sys.exit("TYPE MISMATCH")
 
     def getUnaryType(node, scope):
+        argument = node.children[0]
+        arg_type = getType(argument, scope)
+
+        if argument.is_pure:
+            node.is_pure = True
+
         if node.value == '-':
-            arg_type = getType(node.children[0], scope)
             if arg_type in numeric_type:
                 return arg_type
         elif node.value == '+':
-            arg_type = getType(node.children[0], scope)
             if arg_type in numeric_type:
                 return arg_type
         if node.value == '!':
-            arg_type = getType(node.children[0], scope)
             if arg_type == 'BOOL':
                 return arg_type
+        sys.exit(
+            f"OPERATOR MISMATCH\nOPERATOR: {node.value}\tARGUMENT: {argument.value}")
 
     def getBinaryType(node, scope):
+        left_expr = node.children[0]
+        right_expr = node.children[1]
+        left_type = getType(left_expr, scope)
+        right_type = getType(right_expr, scope)
+
+        if left_expr.is_pure and right_expr.is_pure:
+            node.is_pure = True
+
+        if node.value == '%':
+            if left_type == 'FLOAT' or right_type == 'FLOAT':
+                sys.exit("CAN'T MODULO FLOAT")
+
         if node.value in numeric_ops:
-            left_side = getType(node.children[0], scope)
-            right_side = getType(node.children[1], scope)
-            if left_side == right_side:
-                if left_side in numeric_type:
-                    return right_side
-                if node.value == '+' and left_side == 'STRING':
-                    return right_side
+            if left_type == right_type:
+                if left_type in numeric_type:
+                    return right_type
+                if node.value == '+' and left_type == 'STRING':
+                    return right_type
 
         elif node.value in bool_ops:
-            left_side = getType(node.children[0], scope)
-            right_side = getType(node.children[1], scope)
-            if left_side == right_side and left_side == 'BOOL':
-                return right_side
+            if left_type == right_type and left_type == 'BOOL':
+                return 'BOOL'
 
         elif node.value in check_ops:
-            left_side = getType(node.children[0], scope)
-            right_side = getType(node.children[1], scope)
-            if left_side == right_side:
-                return right_side
+            if left_type == right_type:
+                return 'BOOL'
 
         elif node.value in comparison_ops:
-            left_side = getType(node.children[0], scope)
-            right_side = getType(node.children[1], scope)
-            if left_side == right_side and (left_side in numeric_type) or left_side == 'BOOL':
+            if left_type == right_type and (left_type in numeric_type) or left_type == 'BOOL':
                 return 'BOOL'
+        sys.exit(
+            f"OPERATOR MISMATCH\nLEFT: {left_expr.value}\t Operator: {node.value}\t RIGHT: {right_expr.value}")
 
     def get_scope(name):
         func_info = tree.global_scope[name]
@@ -93,22 +109,24 @@ def typeChecking(tree):
     def check_decl(declarations, scope):
         for decl in declarations:
             var_type = decl.type
-            right_side = decl.children[0]
-            right_node_type = right_side.node_type
-            right_side_type = getType(right_side, scope)
+            right_node = decl.children[0]
+            right_side_type = getType(right_node, scope)
 
             if var_type != right_side_type:
                 if var_type == 'FLOAT':
-                    if right_node_type != 'ATOM' or right_side_type != 'INT':
+                    if not right_node.is_pure or right_side_type != 'INT':
                         sys.exit(
-                            "float mismatch; right side is not float or int literal")
+                            f"DECLARATION TYPE MISTMATCH\nLEFT: {var_type}\tRIGHT: {right_side_type}")
                 else:
-                    sys.exit("TYPE MISMATCH")
+                    sys.exit(
+                        f"DECLARATION TYPE MISTMATCH\nLEFT:{var_type}\tRIGHT:{right_side_type}")
+            if decl.value in scope:
+                sys.exit(f"REDECLARATION ERROR\n{decl.value} already declared")
             scope[decl.value] = decl.type
 
-    def check_returns(func_return, returns):
-        if func_return is not None and not returns:
-            sys.exit("check returns failed")
+    # def check_returns(func_return, returns):
+    #    if func_return is not None and not returns:
+    #        sys.exit("RETURNS CHECK FAILED")
 
     def check_stmts(statemants, scope, func_return):
         returns = False
@@ -118,42 +136,46 @@ def typeChecking(tree):
             action = stmt.node_type
 
             if action == "ASSIGN":
+                if stmt.value not in scope:
+                    sys.exit(f"VARIABLE NOT FOUND\n{stmt.value}")
                 var_type = scope[stmt.value]
                 right_side = getType(stmt.children[0], scope)
                 if var_type != right_side:
-                    sys.exit("left and right side mismatch")
+                    sys.exit(
+                        f"TYPE MISTMATCH\nLEFT:{var_type}\tRIGHT:{right_side}")
 
             elif action in ['IF', 'IF_ELSE']:
                 if getType(stmt.children[0], scope) != 'BOOL':
-                    sys.exit("if argument not bool")
+                    sys.exit("IF ARGUMENT IS NOT BOOL")
                 stmts1 = stmt.children[1]
                 if stmts1 is not None:
                     returns = check_stmts(stmts1, scope, func_return)
-                    check_returns(func_return, returns)
+                    #check_returns(func_return, returns)
                 if action == 'IF_ELSE':
                     stmts2 = stmt.children[2]
                     if stmts2 is not None:
                         returns = check_stmts(
                             stmts2, scope, func_return)
-                        check_returns(func_return, returns)
+                        #check_returns(func_return, returns)
 
             elif action == "FOR":
                 if getType(stmt.children[0], scope) != 'BOOL':
-                    sys.exit("for argument not bool")
+                    sys.exit("FOR ARGUMENT IS NOT BOOL")
                 for_stmt = stmt.children[1]
                 if for_stmt is not None:
                     returns = check_stmts(for_stmt, scope, func_return)
-                    check_returns(func_return, returns)
+                    #check_returns(func_return, returns)
 
             elif action == "RETURN":
-                right_side = stmt.children[0]
-                if right_side is None:
-                    right_side_type = None
+                right_node = stmt.children[0]
+                if right_node is None:
+                    right_node_type = None
                 else:
-                    right_side_type = getType(stmt.children[0], scope)
-                if right_side_type != func_return:
+                    right_node_type = getType(stmt.children[0], scope)
+                if right_node_type != func_return:
 
-                    sys.exit("return argument mismatch")
+                    sys.exit(
+                        f"RETURN ARGUMENT TYPE MISMATCH\nRETURN:{right_node_type}\tFUNCTION RETURN TYPE:{func_return}")
                 return True
 
             elif action == "FUNCCALL":
@@ -166,12 +188,9 @@ def typeChecking(tree):
 
     ast = tree.ast
     if ast == None:
-        print("Typechecking failed!")
-        return False
+        sys.exit("CAN'T TYPCHECK EMPTY AST")
     for func in ast.children:
         func_scope = get_scope(func.value)
-        if len(func.children) != 1:
-            print("Function doesnt have body :(")
         body = func.children[0].children
         func_return = tree.global_scope[func.value][1]
         for block in body:

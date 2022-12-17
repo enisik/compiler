@@ -1,0 +1,10 @@
+package main
+
+import "fmt"
+
+func main() {
+    var a int =  getInt()
+}
+func getInt() int {
+    return 42
+}

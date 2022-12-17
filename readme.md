@@ -7,4 +7,4 @@
     antlr4 -no-listener -Dlanguage=Python3 GoParser.g4
 
 # Aufruf
-    python main.py datei
+    python main.py -compile datei

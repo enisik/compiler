@@ -6,6 +6,7 @@ from antlr4 import *
 from GoLexer import GoLexer
 from GoParser import GoParser
 from TypeChecker import typeChecking
+from ErrorHandler import MyErrorStrategy
 
 
 def main(file):
@@ -13,8 +14,10 @@ def main(file):
     lexer = GoLexer(input_stream)
     stream = CommonTokenStream(lexer)
     parser = GoParser(stream)
+    parser._errHandler = MyErrorStrategy()
     tree = parser.program()
-    if tree.ast is None:
+    print(f"PARSING ERRORS: {parser._errHandler.errors}")
+    if tree.ast is None:  # or len(parser._errHandler.errors) != 0:
         sys.exit("----PARSING/AST-GENERATING FAILED----")
     print("----PARSING/AST-GENERATING SUCCESSFUL----")
     typeChecking(tree)

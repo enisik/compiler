@@ -8,6 +8,7 @@ class GoASTParser(Parser):
             self.type = value_type
             self.node_type = node_type
             self.children = []
+            self.is_pure = False
 
         def __repr__(self) -> str:
             if len(self.children) != 0:
@@ -21,6 +22,7 @@ class GoASTParser(Parser):
 
     def atomNode(self, val, value_type):
         node = self.Node(val, value_type, 'ATOM')
+        node.is_pure = True
         return node
 
     def unaryNode(self, value, child_node):

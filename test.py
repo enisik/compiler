@@ -8,6 +8,7 @@ def main():
         print(filename)
         os.system(
             f"python3 main.py -compile test/{filename}")
+        print("")
     print("\nTesting Finished")
 
 

@@ -1,0 +1,12 @@
+package main
+
+import "fmt"
+
+func main() {
+    var a int = 42
+    foo(42)
+}
+
+func foo(a float64) {
+
+}
