@@ -3,7 +3,8 @@ import "fmt"
 
 func main () {
     var n int = 42
-    var b bool = mybool()
+    var b bool = false
+    b = mybool()
     if b {
         n = 5
     } else {

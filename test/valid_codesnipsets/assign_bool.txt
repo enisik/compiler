@@ -4,8 +4,8 @@ import "fmt"
 
 func main() {
     var a bool = true 
-    var b bool = false
-    var c bool = !true 
-    var d bool = a || false
-    var e bool = false && d
+    a = false
+    a  = !true 
+    a  = a || false
+    a = false && a
 }

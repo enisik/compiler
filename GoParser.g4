@@ -11,7 +11,7 @@ global_scope = dict()
 
 program
 	returns[ast, global_scope]:
-	PACKAGE IDENTIFIER {$IDENTIFIER.text == "main" }? NL (
+	NL? PACKAGE IDENTIFIER {$IDENTIFIER.text == "main" }? NL (
 		IMPORT STRING
 	)* NL main_function (NL functions {$ast = $functions.node})? NL? EOF {$ast = self.ast($main_function.node, $ast)
 $global_scope = global_scope};
@@ -31,6 +31,8 @@ function
 	FUNC IDENTIFIER LB (func_args {$args = $func_args.args})? RB (
 		type {$ret = $type.text}
 	)? NL? CLB NL? body NL? CRB {$node = self.funcNode($IDENTIFIER.text,$ret,$body.node)
+if $IDENTIFIER.text in global_scope:
+    sys.exit(f"DUPLICATED FUNCTION DECLARATION\n{$IDENTIFIER.text}({$args}) {$ret}")
 global_scope[$IDENTIFIER.text] = ($args,$ret)};
 
 body
@@ -59,8 +61,8 @@ declarations
 	| declaration {$node = self.blockNode($declaration.node, None, 'DECL')};
 
 declaration
-	returns[node]:
-	VAR IDENTIFIER type ASSIGN expr {$node = self.declNode($IDENTIFIER.text, $type.text, $expr.node)
+	returns[node, a]:
+	VAR IDENTIFIER (type {$a = $type.text})? ASSIGN expr {$node = self.declNode($IDENTIFIER.text, $a, $expr.node)
 		};
 
 statements
@@ -103,10 +105,10 @@ func_call
 	IDENTIFIER {$id = $IDENTIFIER.text} (
 		DOT IDENTIFIER {$id += "." + $IDENTIFIER.text}
 	)* LB (
-		expr {$args = [$expr.node]} (
-			COMMA expr {$args.append($expr.node)}
+		NL? expr {$args = [$expr.node]} NL? (
+			COMMA NL? expr {$args.append($expr.node)} NL?
 		)*
-	)? RB {$node=self.funcCallNode($id,$args)};
+	)? NL? RB {$node=self.funcCallNode($id,$args)};
 
 // First has highest operator precedency and latest the lowest precedency // By default, ANTLR
 // associates operators left to right

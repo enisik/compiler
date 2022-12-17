@@ -42,7 +42,7 @@ def typeChecking(tree):
                     if func_arg == 'FLOAT' and node_arg_type == 'INT' and node.args[i].is_pure:
                         continue
                     sys.exit(
-                        f"FUNCTION ARGUMENT MISMATCH\nEXPECTED: {func_arg.value}\tGOT: {node.args[i].value}")
+                        f"FUNCTION ARGUMENT MISMATCH\nEXPECTED: {func_args[i]}\tGOT: {node.args[i].value} ({node_arg_type})")
             return return_type
         sys.exit("TYPE MISMATCH")
 
@@ -76,7 +76,8 @@ def typeChecking(tree):
 
         if node.value == '%':
             if left_type == 'FLOAT' or right_type == 'FLOAT':
-                sys.exit("CAN'T MODULO FLOAT")
+                sys.exit(
+                    f"OPERATOR MISMATCH\nLEFT: {left_expr.value} ({left_type})\t Operator: {node.value}\t RIGHT: {right_expr.value} ({right_type})")
 
         if node.value in numeric_ops:
             if left_type == right_type:
@@ -98,7 +99,7 @@ def typeChecking(tree):
                 return 'BOOL'
 
         elif node.value in comparison_ops:
-            if left_type == right_type and (left_type in numeric_type) or left_type == 'BOOL':
+            if (right_type in numeric_type) and (left_type in numeric_type):
                 return 'BOOL'
         sys.exit(
             f"OPERATOR MISMATCH\nLEFT: {left_expr.value} ({left_type})\t Operator: {node.value}\t RIGHT: {right_expr.value} ({right_type})")
@@ -115,7 +116,8 @@ def typeChecking(tree):
             var_type = decl.type
             right_node = decl.children[0]
             right_side_type = getType(right_node, scope)
-
+            if var_type is None:
+                var_type = right_side_type
             if var_type != right_side_type:
                 if var_type == 'FLOAT':
                     if not right_node.is_pure or right_side_type != 'INT':
@@ -128,11 +130,11 @@ def typeChecking(tree):
                 sys.exit(f"REDECLARATION ERROR\n{decl.value} already declared")
             scope[decl.value] = decl.type
 
-    # def check_returns(func_return, returns):
-    #    if func_return is not None and not returns:
-    #        sys.exit("RETURNS CHECK FAILED")
+    def check_returns(func_return, returns):
+        if func_return is not None and not returns:
+            return False
 
-    def check_stmts(statemants, scope, func_return):
+    def check_stmts(statemants, scope, func_return, check_return=False):
         returns = False
         if not isinstance(statemants, list):
             statemants = statemants.children
@@ -144,7 +146,7 @@ def typeChecking(tree):
                     sys.exit(f"VARIABLE NOT FOUND\n{stmt.value}")
                 var_type = scope[stmt.value]
                 right_side = getType(stmt.children[0], scope)
-                if var_type != right_side:
+                if var_type != right_side and not stmt.children[0].is_pure and right_side != 'INT':
                     sys.exit(
                         f"TYPE MISTMATCH\nLEFT: {var_type}\tRIGHT: {right_side}")
 
@@ -154,13 +156,14 @@ def typeChecking(tree):
                 stmts1 = stmt.children[1]
                 if stmts1 is not None:
                     returns = check_stmts(stmts1, scope, func_return)
-                    #check_returns(func_return, returns)
+
                 if action == 'IF_ELSE':
                     stmts2 = stmt.children[2]
                     if stmts2 is not None:
-                        returns = check_stmts(
+                        returns = returns and check_stmts(
                             stmts2, scope, func_return)
-                        #check_returns(func_return, returns)
+                else:
+                    returns = False
 
             elif action == "FOR":
                 if getType(stmt.children[0], scope) != 'BOOL':
@@ -168,7 +171,6 @@ def typeChecking(tree):
                 for_stmt = stmt.children[1]
                 if for_stmt is not None:
                     returns = check_stmts(for_stmt, scope, func_return)
-                    #check_returns(func_return, returns)
 
             elif action == "RETURN":
                 right_node = stmt.children[0]
@@ -180,16 +182,22 @@ def typeChecking(tree):
                     right_node_is_pure = right_node.is_pure
                 if right_node_type != func_return:
                     if func_return != 'FLOAT' or not right_node_is_pure:
-                        sys.exit(
-                            f"RETURN ARGUMENT MISMATCH\nRETURN: {right_node.value} ({right_node_type})\tFUNCTION RETURN TYPE: {func_return}")
+                        if right_node is None:
+                            sys.exit(
+                                f"RETURN ARGUMENT MISMATCH\nRETURN: {right_node_type}\tFUNCTION RETURN TYPE: {func_return}")
+                        else:
+                            sys.exit(
+                                f"RETURN ARGUMENT MISMATCH\nRETURN: {right_node.value} ({right_node_type})\tFUNCTION RETURN TYPE: {func_return}")
                 return True
 
             elif action == "FUNCCALL":
                 getType(stmt, scope)
 
             elif action == "STMT":
-                check_stmts(stmt.children, scope, func_return)
+                returns = check_stmts(stmt.children, scope, func_return)
 
+        if check_return and func_return is not None and not returns:
+            sys.exit(f"CONTROL FLOW ERROR\nMISSING RETURN")
         return returns
 
     ast = tree.ast
@@ -204,5 +212,5 @@ def typeChecking(tree):
             if node_type == "DECL":
                 check_decl(block.children, func_scope)
             if node_type == "STMT":
-                check_stmts(block.children, func_scope, func_return)
+                check_stmts(block.children, func_scope, func_return, True)
     return True

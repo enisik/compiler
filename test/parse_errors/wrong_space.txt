@@ -1,11 +1,7 @@
 package main
-
 import "fmt"
 
 func main() {
-    foo(42)
+    var iin t= 12
 }
 
-func foo(a float64) {
-
-}

@@ -3,7 +3,6 @@ package main
 import "fmt"
 
 func main() {
-    // What a bullshit
     /* OH  
     SHIT 
     WHAT IS WRONG 
