@@ -24,7 +24,6 @@ def main(file):
     parser.addErrorListener(err_listener)
     tree = parser.program()
     if tree.ast is None or len(err_listener.errors) != 0:
-        print(err_listener.errors, file=sys.stderr)
         sys.exit("----LEXING/PARSING/AST-GENERATING FAILED----")
     print("----LEXING/PARSING/AST-GENERATING SUCCESSFUL----")
     typeChecking(tree)
