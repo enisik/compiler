@@ -1,10 +1,10 @@
 import os
-import subprocess
+import sys
 
 
-def main():
+def main(arg):
     print("Begin Testing\n")
-    for filename in os.listdir("test"):
+    for filename in os.listdir(arg):
         print(filename)
         os.system(
             f"python3 main.py -compile test/{filename}")
@@ -13,4 +13,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv[1])

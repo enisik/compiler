@@ -7,8 +7,7 @@ func main() {
     /* OH  
     SHIT 
     WHAT IS WRONG 
-    */
-    if true {
+    */if true {
         foo()
     }
 }

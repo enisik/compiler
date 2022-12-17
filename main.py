@@ -6,18 +6,29 @@ from antlr4 import *
 from GoLexer import GoLexer
 from GoParser import GoParser
 from TypeChecker import typeChecking
-from ErrorHandler import MyErrorStrategy
+from ErrorHandler import MyErrorListener
+
+# def recover(self, recognizer: Parser, e: RecognitionException):
+#recognizer._errHandler.reportError(recognizer, e)
+#    self.errors.append(e)
+#uper().recover(recognizer, e)
 
 
 def main(file):
     input_stream = FileStream(file)
     lexer = GoLexer(input_stream)
+    # lexer.removeErrorListeners()
+    err_listener = MyErrorListener()
+    # lexer.addErrorListener(err_listener)
     stream = CommonTokenStream(lexer)
     parser = GoParser(stream)
-    parser._errHandler = MyErrorStrategy()
+    parser.removeErrorListeners()
+    parser.addErrorListener(err_listener)
+    #parser._errListener = MyErrorStrategy()
     tree = parser.program()
-    print(f"PARSING ERRORS: {parser._errHandler.errors}")
-    if tree.ast is None:  # or len(parser._errHandler.errors) != 0:
+    print(err_listener.errors)
+   # print(f"PARSING ERRORS: {parser.")
+    if tree.ast is None or len(err_listener.errors) != 0:
         sys.exit("----PARSING/AST-GENERATING FAILED----")
     print("----PARSING/AST-GENERATING SUCCESSFUL----")
     typeChecking(tree)

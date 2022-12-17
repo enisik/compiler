@@ -1,14 +1,13 @@
 
+from antlr4.error.ErrorListener import ConsoleErrorListener
 from antlr4 import *
-from antlr4.error.ErrorStrategy import DefaultErrorStrategy
 
 
-class MyErrorStrategy(DefaultErrorStrategy):
+class MyErrorListener(ConsoleErrorListener):
     def __init__(self):
         self.errors = []
         super().__init__()
 
-    def recover(self, recognizer: Parser, e: RecognitionException):
-        #recognizer._errHandler.reportError(recognizer, e)
+    def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
         self.errors.append(e)
-        #uper().recover(recognizer, e)
+        return super().syntaxError(recognizer, offendingSymbol, line, column, msg, e)

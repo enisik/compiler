@@ -8,3 +8,4 @@
 
 # Aufruf
     python main.py -compile datei
+    python main.py -liveness datei (not implemented yet)

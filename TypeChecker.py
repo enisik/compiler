@@ -175,7 +175,7 @@ def typeChecking(tree):
                 if right_node_type != func_return:
 
                     sys.exit(
-                        f"RETURN ARGUMENT TYPE MISMATCH\nRETURN:{right_node_type}\tFUNCTION RETURN TYPE:{func_return}")
+                        f"RETURN ARGUMENT MISMATCH\nRETURN:{right_node.value} ({right_node_type})\tFUNCTION RETURN TYPE:{func_return}")
                 return True
 
             elif action == "FUNCCALL":
