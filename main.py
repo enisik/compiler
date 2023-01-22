@@ -7,9 +7,10 @@ from GoLexer import GoLexer
 from GoParser import GoParser
 from TypeChecker import typeChecking
 from ErrorHandler import MyErrorListener
+from CodeGenerator import codeGen
 
 
-def main(file):
+def parse(file):
     err_listener = MyErrorListener()
 
     input_stream = FileStream(file)
@@ -24,17 +25,26 @@ def main(file):
     parser.addErrorListener(err_listener)
     tree = parser.program()
     if tree.ast is None or len(err_listener.errors) != 0:
-        sys.exit("----LEXING/PARSING/AST-GENERATING FAILED----")
-    print("----LEXING/PARSING/AST-GENERATING SUCCESSFUL----")
+        sys.exit("LEXING/PARSING/AST-GENERATING FAILED")
+    print("LEXING & PARSING & AST-GENERATING SUCCESSFUL")
     typeChecking(tree)
-    print("----TYPECHECKING SUCCESSFUL----")
+    print("TYPECHECKING SUCCESSFUL")
+    return tree
 
 
 if __name__ == '__main__':
-
+    if len(sys.argv) < 3:
+        sys.exit("too few arguments")
+    filename = sys.argv[2]
     match sys.argv[1]:
         case "-compile":
-            main(sys.argv[2])
+            tree = parse(filename)
+            code = codeGen(tree)
+            filename = filename.removesuffix(".go")
+            with open(filename+".j", 'w') as file:
+                file.write(code)
+        case "-parse":
+            ast = parse(filename)
         case "-liveness":
             print("not implemented yet")
         case other:

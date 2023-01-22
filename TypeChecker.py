@@ -128,11 +128,10 @@ def typeChecking(tree):
                         f"DECLARATION TYPE MISTMATCH\nLEFT:{var_type}\tRIGHT:{right_side_type}")
             if decl.value in scope:
                 sys.exit(f"REDECLARATION ERROR\n{decl.value} already declared")
-            scope[decl.value] = decl.type
-
-    def check_returns(func_return, returns):
-        if func_return is not None and not returns:
-            return False
+            if decl.type is not None:
+                scope[decl.value] = decl.type
+            else:
+                scope[decl.value] = right_side_type
 
     def check_stmts(statemants, scope, func_return, check_return=False):
         returns = False
@@ -213,4 +212,5 @@ def typeChecking(tree):
                 check_decl(block.children, func_scope)
             if node_type == "STMT":
                 check_stmts(block.children, func_scope, func_return, True)
+        func.scope = func_scope
     return True
