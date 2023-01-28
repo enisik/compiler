@@ -12,8 +12,12 @@ func main(){
 	//fmt.Println(c)
     //fmt.Println(d)
 
-    if b >= 3 {
-        fmt.Println(-a)
+    if b >= 4 {
+        if b <= 2 {
+            fmt.Println(-a)
+        } else {
+            fmt.Println(b)
+        }
     } else {
         fmt.Println(a)
     }

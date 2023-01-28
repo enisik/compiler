@@ -63,6 +63,8 @@ def printStmt(statments, label_nums, scope, code):
             code = printIf(stmt, label_nums, scope, code)
         elif node_type == "IF_ELSE":
             code = printIfElse(stmt, label_nums, scope, code)
+        elif node_type == "FOR":
+            code = printWhile(stmt, label_nums, scope, code)
 
     return code
 
@@ -163,6 +165,7 @@ def printAssign(stmt, scope, code):
 def printIf(node, label_nums, scope, code):
     expr, stmt = node.children
     if_num = label_nums["if"]
+    label_nums["if"] += 1
 #    if expr.value in [">", "<", ">=", "<="]:
 
     op_value_type = expr.op_value_type
@@ -197,13 +200,13 @@ def printIf(node, label_nums, scope, code):
             code += f"  ifeq if_end_{if_num}\n"
     code = printStmt(stmt.children, label_nums, scope, code)
     code += f"if_end_{if_num}:\n"
-    label_nums["if"] += 1
     return code
 
 
 def printIfElse(node, label_nums, scope, code):
     expr, if_part, else_part = node.children
     if_else_num = label_nums["if_else"]
+    label_nums["if_else"] += 1
 #    if expr.value in [">", "<", ">=", "<="]:
 
     op_value_type = expr.op_value_type
@@ -243,13 +246,52 @@ def printIfElse(node, label_nums, scope, code):
     code += f"if_else_{if_else_num}:\n"
     code = printStmt(else_part.children, label_nums, scope, code)
     code += f"if_else_end_{if_else_num}:\n"
-    label_nums["if_else"] += 1
 
     return code
 
 
-def printWhile():
-    pass
+def printWhile(node, label_nums, scope, code):
+    expr, stmt = node.children
+    while_num = label_nums["while"]
+    label_nums["while"] += 1
+
+    op_value_type = expr.op_value_type
+    code += f"  goto while_{while_num}_check\n"
+
+    code += f"while_{while_num}_body:\n"
+    code = printStmt(stmt.children, label_nums, scope, code)
+
+    code += f"while_{while_num}_check:\n"
+    code = printExpr(expr.children[0], op_value_type, scope, code)
+    code = printExpr(expr.children[1], op_value_type, scope, code)
+    if op_value_type == "INT":
+        if expr.value == ">":
+            code += f"  if_icmpgt while_{while_num}_body\n"
+        elif expr.value == ">=":
+            code += f"  if_icmpge while_{while_num}_body\n"
+        elif expr.value == "<":
+            code += f"  if_icmplt while_{while_num}_body\n"
+        elif expr.value == "<=":
+            code += f"  if_icmple while_{while_num}_body\n"
+        elif expr.value == "==":
+            code += f"  if_icmpeq while_{while_num}_body\n"
+        elif expr.value == "!=":
+            code += f"  if_icmpne while_{while_num}_body\n"
+    elif op_value_type == "FLOAT":
+        code += f"  dcmpg\n"
+        if expr.value == ">":
+            code += f"  ifgt while_{while_num}_body\n"
+        elif expr.value == ">=":
+            code += f"  ifge while_{while_num}_body\n"
+        elif expr.value == "<":
+            code += f"  iflt while_{while_num}_body\n"
+        elif expr.value == "<=":
+            code += f"  ifle while_{while_num}_body\n"
+        elif expr.value == "==":
+            code += f"  ifeq while_{while_num}_body\n"
+        elif expr.value == "!=":
+            code += f"  ifne while_{while_num}_body\n"
+    return code
 
 
 def printFuncCall(stmt, scope, code):
