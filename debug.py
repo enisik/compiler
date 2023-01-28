@@ -34,7 +34,7 @@ def parse(file):
 
 
 if __name__ == '__main__':
-    filename = "./minimal2.go"
+    filename = "./if_bool.go"
     tree = parse(filename)
     filename = filename.removesuffix(".go")
     code = codeGen(tree, filename)

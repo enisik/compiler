@@ -1,6 +1,13 @@
 import sys
 
 
+def bti(bool):
+    if bool == "true":
+        return 1
+    else:
+        return 0
+
+
 def getType(node, scope):
     node_type = node.node_type
     if node_type == "ATOM":
@@ -48,6 +55,8 @@ def setFuncScope(func_vars):
         else:
             func_vars[var] = (i, var_type)
             i += 1
+    if i == 0:
+        i += 1
     return func_vars, i
 
 
@@ -92,7 +101,9 @@ def printExpr(expr, var_type, scope, code):
         elif var_type == "INT":
             code += f"  ldc {expr.value}\n"
         elif var_type == "STRING":
-            code += f"  ldc {expr.values}\n"
+            code += f"  ldc {expr.value}\n"
+        elif var_type == "BOOL":
+            code += f"  ldc {bti(expr.value)}\n"
     elif expr.node_type == "UNARY":
         code = printUnary(expr, var_type, scope, code)
     elif expr.node_type == "BINARY":
@@ -137,6 +148,30 @@ def printBinary(expr, var_type, scope, code):
         elif var_type == "FLOAT":
             code += f"  drem\n"
 
+    elif expr.value == "&&":
+        code += f"  iand\n"
+
+    elif expr.value == "||":
+        code += f"  ior\n"
+
+    elif expr.value == ">":
+        pass
+
+    elif expr.value == ">=":
+        pass
+
+    elif expr.value == "<":
+        pass
+
+    elif expr.value == "<=":
+        pass
+
+    elif expr.value == "==":
+        pass
+
+    elif expr.value == "!=":
+        pass
+
     return code
 
 
@@ -149,6 +184,9 @@ def printUnary(expr, var_type, scope, code):
             code += f"  dneg\n"
     elif expr.value == "+":
         return code
+    elif expr.value == "!":
+        code += f"  iconst_1\n"
+        code += f"  ixor\n"
 
     return code
 
@@ -168,36 +206,45 @@ def printIf(node, label_nums, scope, code):
     label_nums["if"] += 1
 #    if expr.value in [">", "<", ">=", "<="]:
 
-    op_value_type = expr.op_value_type
-    code = printExpr(expr.children[0], op_value_type, scope, code)
-    code = printExpr(expr.children[1], op_value_type, scope, code)
-    if op_value_type == "INT":
-        if expr.value == ">":
-            code += f"  if_icmple if_end_{if_num}\n"
-        elif expr.value == ">=":
-            code += f"  if_icmplt if_end_{if_num}\n"
-        elif expr.value == "<":
-            code += f"  if_icmpge if_end_{if_num}\n"
-        elif expr.value == "<=":
-            code += f"  if_icmpgt if_end_{if_num}\n"
-        elif expr.value == "==":
-            code += f"  if_icmpne if_end_{if_num}\n"
-        elif expr.value == "!=":
-            code += f"  if_icmpeq if_end_{if_num}\n"
-    elif op_value_type == "FLOAT":
-        code += f"  dcmpg\n"
-        if expr.value == ">":
-            code += f"  ifle if_end_{if_num}\n"
-        elif expr.value == ">=":
-            code += f"  iflt if_end_{if_num}\n"
-        elif expr.value == "<":
-            code += f"  ifge if_end_{if_num}\n"
-        elif expr.value == "<=":
-            code += f"  ifgt if_end_{if_num}\n"
-        elif expr.value == "==":
-            code += f"  ifne if_end_{if_num}\n"
-        elif expr.value == "!=":
+    expr_type = expr.node_type
+    if expr_type == "ID" or expr_type == "ATOM":
+        code = printExpr(expr, label_nums, scope, code)
+        code += f"  ifeq if_end_{if_num}\n"
+    else:
+        op_value_type = expr.op_value_type
+        code = printExpr(expr.children[0], op_value_type, scope, code)
+        code = printExpr(expr.children[1], op_value_type, scope, code)
+        if op_value_type == "INT":
+            if expr.value == ">":
+                code += f"  if_icmple if_end_{if_num}\n"
+            elif expr.value == ">=":
+                code += f"  if_icmplt if_end_{if_num}\n"
+            elif expr.value == "<":
+                code += f"  if_icmpge if_end_{if_num}\n"
+            elif expr.value == "<=":
+                code += f"  if_icmpgt if_end_{if_num}\n"
+            elif expr.value == "==":
+                code += f"  if_icmpne if_end_{if_num}\n"
+            elif expr.value == "!=":
+                code += f"  if_icmpeq if_end_{if_num}\n"
+        elif op_value_type == "FLOAT":
+            code += f"  dcmpg\n"
+            if expr.value == ">":
+                code += f"  ifle if_end_{if_num}\n"
+            elif expr.value == ">=":
+                code += f"  iflt if_end_{if_num}\n"
+            elif expr.value == "<":
+                code += f"  ifge if_end_{if_num}\n"
+            elif expr.value == "<=":
+                code += f"  ifgt if_end_{if_num}\n"
+            elif expr.value == "==":
+                code += f"  ifne if_end_{if_num}\n"
+            elif expr.value == "!=":
+                code += f"  ifeq if_end_{if_num}\n"
+        elif op_value_type == "BOOL":
+            code = printExpr(expr, label_nums, scope, code)
             code += f"  ifeq if_end_{if_num}\n"
+
     code = printStmt(stmt.children, label_nums, scope, code)
     code += f"if_end_{if_num}:\n"
     return code
@@ -207,38 +254,46 @@ def printIfElse(node, label_nums, scope, code):
     expr, if_part, else_part = node.children
     if_else_num = label_nums["if_else"]
     label_nums["if_else"] += 1
-#    if expr.value in [">", "<", ">=", "<="]:
 
-    op_value_type = expr.op_value_type
-    code = printExpr(expr.children[0], op_value_type, scope, code)
-    code = printExpr(expr.children[1], op_value_type, scope, code)
-    if op_value_type == "INT":
-        if expr.value == ">":
-            code += f"  if_icmple if_else_{if_else_num}\n"
-        elif expr.value == ">=":
-            code += f"  if_icmplt if_else_{if_else_num}\n"
-        elif expr.value == "<":
-            code += f"  if_icmpge if_else_{if_else_num}\n"
-        elif expr.value == "<=":
-            code += f"  if_icmpgt if_else_{if_else_num}\n"
-        elif expr.value == "==":
-            code += f"  if_icmpeq if_else_{if_else_num}\n"
-        elif expr.value == "!=":
-            code += f"  if_icmpne if_else_{if_else_num}\n"
+    expr_type = expr.node_type
+    if expr_type == "ID" or expr_type == "ATOM":
+        code = printExpr(expr, label_nums, scope, code)
+        code += f"  ifeq if_else_{if_else_num}\n"
+    else:
+        op_value_type = expr.op_value_type
+        code = printExpr(expr.children[0], op_value_type, scope, code)
+        code = printExpr(expr.children[1], op_value_type, scope, code)
+        if op_value_type == "INT":
+            if expr.value == ">":
+                code += f"  if_icmple if_else_{if_else_num}\n"
+            elif expr.value == ">=":
+                code += f"  if_icmplt if_else_{if_else_num}\n"
+            elif expr.value == "<":
+                code += f"  if_icmpge if_else_{if_else_num}\n"
+            elif expr.value == "<=":
+                code += f"  if_icmpgt if_else_{if_else_num}\n"
+            elif expr.value == "==":
+                code += f"  if_icmpeq if_else_{if_else_num}\n"
+            elif expr.value == "!=":
+                code += f"  if_icmpne if_else_{if_else_num}\n"
 
-    elif op_value_type == "FLOAT":
-        code += f"  dcmpg\n"
-        if expr.value == ">":
-            code += f"  ifle if_else_{if_else_num}\n"
-        elif expr.value == ">=":
-            code += f"  iflt if_else_{if_else_num}\n"
-        elif expr.value == "<":
-            code += f"  ifge if_else_{if_else_num}\n"
-        elif expr.value == "<=":
-            code += f"  ifgt if_else_{if_else_num}\n"
-        elif expr.value == "==":
-            code += f"  ifne if_else_{if_else_num}\n"
-        elif expr.value == "!=":
+        elif op_value_type == "FLOAT":
+            code += f"  dcmpg\n"
+            if expr.value == ">":
+                code += f"  ifle if_else_{if_else_num}\n"
+            elif expr.value == ">=":
+                code += f"  iflt if_else_{if_else_num}\n"
+            elif expr.value == "<":
+                code += f"  ifge if_else_{if_else_num}\n"
+            elif expr.value == "<=":
+                code += f"  ifgt if_else_{if_else_num}\n"
+            elif expr.value == "==":
+                code += f"  ifne if_else_{if_else_num}\n"
+            elif expr.value == "!=":
+                code += f"  ifeq if_else_{if_else_num}\n"
+
+        elif op_value_type == "BOOL":
+            code = printExpr(expr, label_nums, scope, code)
             code += f"  ifeq if_else_{if_else_num}\n"
 
     code = printStmt(if_part.children, label_nums, scope, code)
@@ -255,13 +310,18 @@ def printWhile(node, label_nums, scope, code):
     while_num = label_nums["while"]
     label_nums["while"] += 1
 
-    op_value_type = expr.op_value_type
     code += f"  goto while_{while_num}_check\n"
 
     code += f"while_{while_num}_body:\n"
     code = printStmt(stmt.children, label_nums, scope, code)
 
     code += f"while_{while_num}_check:\n"
+    expr_type = expr.node_type
+    if expr_type == "ID" or expr_type == "ATOM":
+        code = printExpr(expr, label_nums, scope, code)
+        code += f"  ifne while_{while_num}_body\n"
+        return code
+    op_value_type = expr.op_value_type
     code = printExpr(expr.children[0], op_value_type, scope, code)
     code = printExpr(expr.children[1], op_value_type, scope, code)
     if op_value_type == "INT":
@@ -291,6 +351,9 @@ def printWhile(node, label_nums, scope, code):
             code += f"  ifeq while_{while_num}_body\n"
         elif expr.value == "!=":
             code += f"  ifne while_{while_num}_body\n"
+    elif op_value_type == "BOOL":
+        code = printExpr(expr, label_nums, scope, code)
+        code += f"  ifne while_{while_num}_body\n"
     return code
 
 
@@ -304,6 +367,10 @@ def printFuncCall(stmt, scope, code):
             code += f"  invokevirtual java/io/PrintStream/println(I)V\n"
         elif var_type == "FLOAT":
             code += f"  invokevirtual java/io/PrintStream/println(D)V\n"
+        elif var_type == "STRING":
+            code += f"  invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V\n"
+        elif var_type == "BOOL":
+            code += f"  invokevirtual java/io/PrintStream/println(Z)V\n"
     else:
         pass
 
@@ -311,18 +378,22 @@ def printFuncCall(stmt, scope, code):
 
 
 def loadVar(var_num, var_type, code):
-    if var_type == "INT":
+    if var_type == "INT" or var_type == "BOOL":
         code += f"  iload {var_num}\n"
     elif var_type == "FLOAT":
         code += f"  dload {var_num}\n"
+    elif var_type == "STRING":
+        code += f"  aload {var_num}\n"
     return code
 
 
 def storeVar(var_num, var_type, code):
-    if var_type == "INT":
+    if var_type == "INT" or var_type == "BOOL":
         code += f"  istore {var_num}\n"
     elif var_type == "FLOAT":
         code += f"  dstore {var_num}\n"
+    elif var_type == "STRING":
+        code += f"  astore {var_num}\n"
     return code
 
 

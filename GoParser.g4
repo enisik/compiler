@@ -91,8 +91,8 @@ if_control
 	returns[node, stat1, stat2]:
 	IF expr NL? CLB NL? (statements {$stat1= $statements.node})? NL? CRB NL? ELSE NL? CLB NL? (
 		statements {$stat2 = $statements.node}
-	)? NL? CRB {$node= self.ifNode($expr.node, $stat1, $stat2)}
-	| IF expr NL? CLB NL? (statements {$stat1= $statements.node})? NL? CRB {$node= self.ifNode($expr.node, $stat1)
+	)? NL? CRB NL? {$node= self.ifNode($expr.node, $stat1, $stat2)}
+	| IF expr NL? CLB NL? (statements {$stat1= $statements.node})? NL? CRB NL? {$node= self.ifNode($expr.node, $stat1)
 };
 
 for_loop
@@ -110,7 +110,7 @@ func_call
 		)*
 	)? NL? RB {$node=self.funcCallNode($id,$args)};
 
-// First has highest operator precedency and latest the lowest precedency // By default, ANTLR
+// First has highest operator precedency and latest the lowest precedency. By default, ANTLR
 // associates operators left to right
 expr
 	returns[node]:
