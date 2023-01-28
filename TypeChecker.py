@@ -23,6 +23,7 @@ def typeChecking(tree):
         elif node_type == 'FUNCCALL':
             func_name = node.value
             if func_name == "fmt.Println":
+                getType(node.args[0], scope)
                 return None
             if func_name not in tree.global_scope:
                 sys.exit(f"FUNCTION {func_name} NOT DEFINED")
@@ -53,11 +54,14 @@ def typeChecking(tree):
         if argument.is_pure:
             node.is_pure = True
 
+        node.op_value_type = arg_type
         if node.value == '-':
             if arg_type in numeric_type:
+
                 return arg_type
         elif node.value == '+':
             if arg_type in numeric_type:
+
                 return arg_type
         if node.value == '!':
             if arg_type == 'BOOL':
@@ -70,6 +74,11 @@ def typeChecking(tree):
         right_expr = node.children[1]
         left_type = getType(left_expr, scope)
         right_type = getType(right_expr, scope)
+
+        if left_type == 'FLOAT' or right_type == 'FLOAT':
+            node.op_value_type = 'FLOAT'
+        else:
+            node.op_value_type = left_type
 
         if left_expr.is_pure and right_expr.is_pure:
             node.is_pure = True
@@ -96,6 +105,8 @@ def typeChecking(tree):
 
         elif node.value in check_ops:
             if left_type == right_type:
+                return 'BOOL'
+            elif (left_type in numeric_type) and (right_type in numeric_type):
                 return 'BOOL'
 
         elif node.value in comparison_ops:
@@ -159,8 +170,8 @@ def typeChecking(tree):
                 if action == 'IF_ELSE':
                     stmts2 = stmt.children[2]
                     if stmts2 is not None:
-                        returns = returns and check_stmts(
-                            stmts2, scope, func_return)
+                        returns = check_stmts(
+                            stmts2, scope, func_return) and returns
                 else:
                     returns = False
 

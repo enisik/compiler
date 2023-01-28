@@ -2,10 +2,8 @@ package main
 import "fmt"
 
 func main () {
-    var n int = 42
+    var n float64 = 42.0
     if n > 0 {
-        n = 5
-    } else {
-        
-    }
+        n = 5.0
+    } 
 }

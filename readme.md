@@ -7,5 +7,6 @@
     antlr4 -no-listener -Dlanguage=Python3 GoParser.g4
 
 # Aufruf
-    python main.py -compile datei
+    python main.py -compile datei (lexing & parsing & typechecking & jasmin code (unfertig))
+    python main.py -parse datei (lexing & parsing & typechecking)
     python main.py -liveness datei (not implemented yet)

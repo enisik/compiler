@@ -34,20 +34,9 @@ def parse(file):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 3:
-        sys.exit("too few arguments")
-    filepath = sys.argv[2]
-    filename = os.path.basename(filepath)
-    match sys.argv[1]:
-        case "-compile":
-            tree = parse(filepath)
-            filename = filename.removesuffix(".go")
-            code = codeGen(tree, filename)
-            with open(filename+".j", 'w') as file:
-                file.write(code)
-        case "-parse":
-            ast = parse(filepath)
-        case "-liveness":
-            print("not implemented yet")
-        case other:
-            print("I don't know what to do")
+    filename = "./minimal2.go"
+    tree = parse(filename)
+    filename = filename.removesuffix(".go")
+    code = codeGen(tree, filename)
+    with open(filename+".j", 'w') as file:
+        file.write(code)
