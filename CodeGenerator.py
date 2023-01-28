@@ -65,11 +65,11 @@ def printStmt(statments, label_nums, scope, code):
         node_type = stmt.node_type
 
         if node_type == "ASSIGN":
-            code = printAssign(stmt, scope, code)
+            code = printAssign(stmt, label_nums, scope, code)
         elif node_type == "FUNCCALL":
-            code = printFuncCall(stmt, scope, code)
+            code = printFuncCall(stmt, label_nums, scope, code)
         elif node_type == "IF":
-            code = printIf(stmt, label_nums, scope, code)
+            code = printIf(stmt, label_nums, label_nums, scope, code)
         elif node_type == "IF_ELSE":
             code = printIfElse(stmt, label_nums, scope, code)
         elif node_type == "FOR":
@@ -78,19 +78,19 @@ def printStmt(statments, label_nums, scope, code):
     return code
 
 
-def printDecl(declarations, scope, code):
+def printDecl(declarations, label_nums, scope, code):
     for decl in declarations:
         if decl.children is not None:
             var = scope[decl.value]
             var_type = var[1]
             # print(decl.children)
             expr = decl.children[0]
-            code = printExpr(expr, var_type, scope,  code)
+            code = printExpr(expr, var_type, label_nums, scope,  code)
         code = storeVar(var[0], var_type, code)
     return code
 
 
-def printExpr(expr, var_type, scope, code):
+def printExpr(expr, var_type, label_nums, scope, code):
     if expr.node_type == "ATOM":
         if var_type == "FLOAT":
             if getType(expr, scope) == "INT":
@@ -105,18 +105,23 @@ def printExpr(expr, var_type, scope, code):
         elif var_type == "BOOL":
             code += f"  ldc {bti(expr.value)}\n"
     elif expr.node_type == "UNARY":
-        code = printUnary(expr, var_type, scope, code)
+        code = printUnary(expr, var_type, label_nums, scope, code)
     elif expr.node_type == "BINARY":
-        code = printBinary(expr, var_type, scope, code)
+        code = printBinary(expr, var_type, label_nums, scope, code)
     elif expr.node_type == "ID":
         var_num, var_type = scope[expr.value]
         code = loadVar(var_num, var_type, code)
     return code
 
 
-def printBinary(expr, var_type, scope, code):
-    code = printExpr(expr.children[0], var_type, scope, code)
-    code = printExpr(expr.children[1], var_type, scope, code)
+def printBinary(expr, var_type, label_nums, scope, code):
+    op_value_type = expr.op_value_type
+
+    comp_num = label_nums["comparison"]
+    if expr.value in ["<", "<=", ">", ">=", "==", "!="]:
+        label_nums["comparison"] += 1
+    code = printExpr(expr.children[0], op_value_type, label_nums, scope, code)
+    code = printExpr(expr.children[1], op_value_type, label_nums, scope, code)
 
     if expr.value == "+":
         if var_type == "INT":
@@ -155,16 +160,47 @@ def printBinary(expr, var_type, scope, code):
         code += f"  ior\n"
 
     elif expr.value == ">":
-        pass
-
+        if op_value_type == "INT":
+            code += f"  if_icmple comp_{comp_num}_false\n"
+        else:
+            code += f"  dcmpg\n"
+            code += f"  ifle comp_{comp_num}_false\n"
+        code += f"  iconst_1\n  goto comp_{comp_num}_end\n"
+        code += f"comp_{comp_num}_false:\n"
+        code += f"  iconst_0\n"
+        code += f"comp_{comp_num}_end:\n"
     elif expr.value == ">=":
-        pass
+        if op_value_type == "INT":
+            code += f"  if_icmplt comp_{comp_num}_false\n"
+        else:
+            code += f"  dcmpg\n"
+            code += f"  iflt comp_{comp_num}_false\n"
+        code += f"  iconst_1\n  goto comp_{comp_num}_end\n"
+        code += f"comp_{comp_num}_false:\n"
+        code += f"  iconst_0\n"
+        code += f"comp_{comp_num}_end:\n"
 
     elif expr.value == "<":
-        pass
+        if op_value_type == "INT":
+            code += f"  if_icmpge comp_{comp_num}_false\n"
+        else:
+            code += f"  dcmpg\n"
+            code += f"  ifge comp_{comp_num}_false\n"
+        code += f"  iconst_1\n  goto comp_{comp_num}_end\n"
+        code += f"comp_{comp_num}_false:\n"
+        code += f"  iconst_0\n"
+        code += f"comp_{comp_num}_end:\n"
 
     elif expr.value == "<=":
-        pass
+        if op_value_type == "INT":
+            code += f"  if_icmpgt comp_{comp_num}_false\n"
+        else:
+            code += f"  dcmpg\n"
+            code += f"  ifgt comp_{comp_num}_false\n"
+        code += f"  iconst_1\n  goto comp_{comp_num}_end\n"
+        code += f"comp_{comp_num}_false:\n"
+        code += f"  iconst_0\n"
+        code += f"comp_{comp_num}_end:\n"
 
     elif expr.value == "==":
         pass
@@ -175,8 +211,8 @@ def printBinary(expr, var_type, scope, code):
     return code
 
 
-def printUnary(expr, var_type, scope, code):
-    code = printExpr(expr.children[0], var_type, scope, code)
+def printUnary(expr, var_type, label_nums, scope, code):
+    code = printExpr(expr.children[0], var_type, label_nums, scope, code)
     if expr.value == "-":
         if var_type == "INT":
             code += f"  ineg\n"
@@ -191,11 +227,11 @@ def printUnary(expr, var_type, scope, code):
     return code
 
 
-def printAssign(stmt, scope, code):
+def printAssign(stmt, label_nums, scope, code):
     var_name = stmt.value
     var_num, var_type = scope[var_name]
 
-    code = printExpr(stmt.children[0], var_type, scope, code)
+    code = printExpr(stmt.children[0], var_type, label_nums, scope, code)
     code = storeVar(var_num, var_type, code)
     return code
 
@@ -208,7 +244,7 @@ def printIf(node, label_nums, scope, code):
 
     expr_type = expr.node_type
     if expr_type == "ID" or expr_type == "ATOM":
-        code = printExpr(expr, label_nums, scope, code)
+        code = printExpr(expr, "BOOL", label_nums, scope, code)
         code += f"  ifeq if_end_{if_num}\n"
     else:
         op_value_type = expr.op_value_type
@@ -242,7 +278,7 @@ def printIf(node, label_nums, scope, code):
             elif expr.value == "!=":
                 code += f"  ifeq if_end_{if_num}\n"
         elif op_value_type == "BOOL":
-            code = printExpr(expr, label_nums, scope, code)
+            code = printExpr(expr, "BOOL", label_nums, scope, code)
             code += f"  ifeq if_end_{if_num}\n"
 
     code = printStmt(stmt.children, label_nums, scope, code)
@@ -257,12 +293,14 @@ def printIfElse(node, label_nums, scope, code):
 
     expr_type = expr.node_type
     if expr_type == "ID" or expr_type == "ATOM":
-        code = printExpr(expr, label_nums, scope, code)
+        code = printExpr(expr, "BOOL", label_nums, scope, code)
         code += f"  ifeq if_else_{if_else_num}\n"
     else:
         op_value_type = expr.op_value_type
-        code = printExpr(expr.children[0], op_value_type, scope, code)
-        code = printExpr(expr.children[1], op_value_type, scope, code)
+        code = printExpr(expr.children[0],
+                         op_value_type, label_nums, scope, code)
+        code = printExpr(expr.children[1],
+                         op_value_type, label_nums, scope, code)
         if op_value_type == "INT":
             if expr.value == ">":
                 code += f"  if_icmple if_else_{if_else_num}\n"
@@ -293,7 +331,7 @@ def printIfElse(node, label_nums, scope, code):
                 code += f"  ifeq if_else_{if_else_num}\n"
 
         elif op_value_type == "BOOL":
-            code = printExpr(expr, label_nums, scope, code)
+            code = printExpr(expr, "BOOL", label_nums, scope, code)
             code += f"  ifeq if_else_{if_else_num}\n"
 
     code = printStmt(if_part.children, label_nums, scope, code)
@@ -318,12 +356,12 @@ def printWhile(node, label_nums, scope, code):
     code += f"while_{while_num}_check:\n"
     expr_type = expr.node_type
     if expr_type == "ID" or expr_type == "ATOM":
-        code = printExpr(expr, label_nums, scope, code)
+        code = printExpr(expr, "BOOL", label_nums, scope, code)
         code += f"  ifne while_{while_num}_body\n"
         return code
     op_value_type = expr.op_value_type
-    code = printExpr(expr.children[0], op_value_type, scope, code)
-    code = printExpr(expr.children[1], op_value_type, scope, code)
+    code = printExpr(expr.children[0], op_value_type, label_nums, scope, code)
+    code = printExpr(expr.children[1], op_value_type, label_nums, scope, code)
     if op_value_type == "INT":
         if expr.value == ">":
             code += f"  if_icmpgt while_{while_num}_body\n"
@@ -352,17 +390,17 @@ def printWhile(node, label_nums, scope, code):
         elif expr.value == "!=":
             code += f"  ifne while_{while_num}_body\n"
     elif op_value_type == "BOOL":
-        code = printExpr(expr, label_nums, scope, code)
+        code = printExpr(expr, "BOOL", label_nums, scope, code)
         code += f"  ifne while_{while_num}_body\n"
     return code
 
 
-def printFuncCall(stmt, scope, code):
+def printFuncCall(stmt, label_nums, scope, code):
     if stmt.value == "fmt.Println":
         arg = stmt.args[0]
         var_type = getType(arg, scope)
         code += "  getstatic java/lang/System/out Ljava/io/PrintStream;\n"
-        code = printExpr(arg, var_type, scope, code)
+        code = printExpr(arg, var_type, label_nums, scope, code)
         if var_type == "INT":
             code += f"  invokevirtual java/io/PrintStream/println(I)V\n"
         elif var_type == "FLOAT":
@@ -400,7 +438,7 @@ def storeVar(var_num, var_type, code):
 def codeGen(tree, filename):
     code = begin(filename)
     ast = tree.ast
-    label_num = {"if": 0, "if_else": 0, "while": 0}
+    label_nums = {"if": 0, "if_else": 0, "while": 0, "comparison": 0}
     if ast == None:
         sys.exit("CAN'T GENERATE CODE FROM EMPTY AST")
 
@@ -411,9 +449,9 @@ def codeGen(tree, filename):
         for block in body:
             node_type = block.node_type
             if node_type == "DECL":
-                code = printDecl(block.children, func_vars, code)
+                code = printDecl(block.children, label_nums, func_vars, code)
             if node_type == "STMT":
-                code = printStmt(block.children, label_num, func_vars, code)
+                code = printStmt(block.children, label_nums, func_vars, code)
 
         if code.endswith("  return\n"):
             code += ".end method\n"

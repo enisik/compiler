@@ -34,7 +34,7 @@ def parse(file):
 
 
 if __name__ == '__main__':
-    filename = "./if_bool.go"
+    filename = "./test/compile_code/if_bool.go"
     tree = parse(filename)
     filename = filename.removesuffix(".go")
     code = codeGen(tree, filename)
