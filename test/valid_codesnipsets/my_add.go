@@ -3,10 +3,10 @@ package main
 import "fmt"
 
 func main() {
-	//MyAdd()
-	//MyAdd(2)
-	MyAdd(1,2)
-	//MyAdd(1,2,3)
+	fmt.Println(MyAdd(1,1))
+	fmt.Println(MyAdd(2,2))
+	fmt.Println(MyAdd(1,2))
+	fmt.Println(MyAdd(-4,5))
 }
 
 func MyAdd(a int, b int) int

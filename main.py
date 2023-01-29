@@ -1,6 +1,6 @@
 # antlr4 -Dlanguage=Python3 GoLexer.g4
 # antlr4 -no-listener -Dlanguage=Python3 GoParser.g4
-# python main.py -compile input.txt
+# python main.py -compile input.go
 import sys
 import os
 from antlr4 import *
@@ -35,7 +35,7 @@ def parse(file):
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
-        sys.exit("too few arguments")
+        sys.exit("Too few arguments. Please call the program like this:\npython3 main.py -compile filename\nliveness not implemented")
     filepath = sys.argv[2]
     filename = os.path.basename(filepath)
     match sys.argv[1]:
@@ -50,4 +50,4 @@ if __name__ == '__main__':
         case "-liveness":
             print("not implemented yet")
         case other:
-            print("I don't know what to do")
+            print("I don't know what to do. Please call the program like this:\npython3 main.py -compile filename\nliveness not implemented")

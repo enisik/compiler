@@ -19,7 +19,7 @@ def typeToJVM(type):
         return "Z"
     elif type == "STRING":
         return "Ljava/lang/String;"
-    elif type == None:
+    elif type is None:
         return "V"
 
 
@@ -131,7 +131,6 @@ def printDecl(declarations, label_nums, scope, code, global_scope):
         if decl.children is not None:
             var = scope[decl.value]
             var_type = var[1]
-            # print(decl.children)
             expr = decl.children[0]
             op_value_type = getType(expr, scope, global_scope)
             code = printExpr(expr, op_value_type, label_nums,
@@ -314,7 +313,6 @@ def printIf(node, label_nums, scope, code, global_scope):
     expr, stmt = node.children
     if_num = label_nums["if"]
     label_nums["if"] += 1
-#    if expr.value in [">", "<", ">=", "<="]:
 
     expr_type = expr.node_type
     if expr_type == "ID" or expr_type == "ATOM":
@@ -551,7 +549,7 @@ def codeGen(tree, filename):
     global_scope = tree.global_scope
     label_nums = {"if": 0, "if_else": 0, "while": 0,
                   "comparison": 0, "class_name": filename}
-    if ast == None:
+    if ast is None:
         sys.exit("CAN'T GENERATE CODE FROM EMPTY AST")
 
     for func in ast.children:
