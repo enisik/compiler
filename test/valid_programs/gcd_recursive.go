@@ -28,6 +28,9 @@ func findGCD(first int, second int) int {
 func gcd(n1 int, n2 int) {
 	// Get GCD of two number
 	var result int = findGCD(n1, n2)
-	fmt.Println("Numbers (", 
-		n1, " ", n2, ") : GCD : ", result)
+	fmt.Println("Numbers")
+	fmt.Println(n1)
+	fmt.Println(n2)
+	fmt.Println("GCD")
+	fmt.Println(result)
 }

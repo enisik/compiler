@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main(){
-    fmt.Println(gcd(42,2))
+    fmt.Println(gcd_iterative(42,2))
 }
 
 func gcd_iterative(a int, b int) int {
