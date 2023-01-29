@@ -4,11 +4,26 @@ import sys
 def bti(bool):
     if bool == "true":
         return 1
-    else:
+    elif bool == "false":
         return 0
+    else:
+        sys.exit("Something went wrong!")
 
 
-def getType(node, scope):
+def typeToJVM(type):
+    if type == "INT":
+        return "I"
+    elif type == "FLOAT":
+        return "D"
+    elif type == "BOOL":
+        return "Z"
+    elif type == "STRING":
+        return "Ljava/lang/String;"
+    elif type == None:
+        return "V"
+
+
+def getType(node, scope, global_scope):
     node_type = node.node_type
     if node_type == "ATOM":
         return node.type
@@ -16,6 +31,8 @@ def getType(node, scope):
         return scope[node.value][1]
     elif node_type == "UNARY" or node_type == "BINARY":
         return node.op_value_type
+    elif node_type == "FUNCCALL":
+        return global_scope[node.value][1]
 
 
 def begin(name):
@@ -32,14 +49,19 @@ def begin(name):
     return code
 
 
-def setFuncStart(func, len_vars, code):
+def setFuncStart(func, func_args, len_vars, func_return_type, code):
 
     if func.value == "main":
         code += ".method public static main([Ljava/lang/String;)V\n"
         code += "  .limit stack 100\n"
         code += f"  .limit locals {len_vars}\n"
     else:
-        code += f".method public static {func.value}()V\n"
+        code += f".method public static {func.value}("
+        if func_args is not None:
+            for arg in func_args:
+                code += typeToJVM(arg[1])
+
+        code += f"){typeToJVM(func_return_type)}\n"
         code += "  .limit stack 100\n"
         code += f"  .limit locals {len_vars}\n"
     return code
@@ -60,40 +82,63 @@ def setFuncScope(func_vars):
     return func_vars, i
 
 
-def printStmt(statments, label_nums, scope, code):
+def printStmt(statments, label_nums, scope, code, global_scope):
     for stmt in statments:
         node_type = stmt.node_type
 
         if node_type == "ASSIGN":
-            code = printAssign(stmt, label_nums, scope, code)
+            code = printAssign(stmt, label_nums, scope, code, global_scope)
         elif node_type == "FUNCCALL":
-            code = printFuncCall(stmt, label_nums, scope, code)
+            code = printFuncCall(stmt, label_nums, scope, code, global_scope)
         elif node_type == "IF":
-            code = printIf(stmt, label_nums, label_nums, scope, code)
+            code = printIf(stmt, label_nums,
+                           scope, code, global_scope)
         elif node_type == "IF_ELSE":
-            code = printIfElse(stmt, label_nums, scope, code)
+            code = printIfElse(stmt, label_nums, scope, code, global_scope)
         elif node_type == "FOR":
-            code = printWhile(stmt, label_nums, scope, code)
+            code = printWhile(stmt, label_nums, scope, code, global_scope)
+        else:
+            code = printReturn(stmt, label_nums, scope, code, global_scope)
 
     return code
 
 
-def printDecl(declarations, label_nums, scope, code):
+def printReturn(stmt, label_nums, scope, code, global_scope):
+    return_expr = stmt.children[0]
+    if return_expr is None:
+        return_type = None
+    else:
+        return_type = getType(return_expr, scope, global_scope)
+        code = printExpr(return_expr, return_type, label_nums,
+                         scope, code, global_scope)
+    if return_type == "INT" or return_type == "BOOL":
+        code += f"  ireturn\n"
+    elif return_type == "FLOAT":
+        code += f"  dreturn\n"
+    elif return_type == "STRING":
+        code += f"  areturn\n"
+    elif return_type is None:
+        code += f"  return\n"
+    return code
+
+
+def printDecl(declarations, label_nums, scope, code, global_scope):
     for decl in declarations:
         if decl.children is not None:
             var = scope[decl.value]
             var_type = var[1]
             # print(decl.children)
             expr = decl.children[0]
-            code = printExpr(expr, var_type, label_nums, scope,  code)
+            code = printExpr(expr, var_type, label_nums,
+                             scope, code, global_scope)
         code = storeVar(var[0], var_type, code)
     return code
 
 
-def printExpr(expr, var_type, label_nums, scope, code):
+def printExpr(expr, var_type, label_nums, scope, code, global_scope):
     if expr.node_type == "ATOM":
         if var_type == "FLOAT":
-            if getType(expr, scope) == "INT":
+            if getType(expr, scope, global_scope) == "INT":
                 code += f"  ldc {expr.value}\n"
                 code += "  i2d\n"
             else:
@@ -105,59 +150,72 @@ def printExpr(expr, var_type, label_nums, scope, code):
         elif var_type == "BOOL":
             code += f"  ldc {bti(expr.value)}\n"
     elif expr.node_type == "UNARY":
-        code = printUnary(expr, var_type, label_nums, scope, code)
+        code = printUnary(expr, var_type, label_nums,
+                          scope, code, global_scope)
     elif expr.node_type == "BINARY":
-        code = printBinary(expr, var_type, label_nums, scope, code)
+        code = printBinary(expr, var_type, label_nums,
+                           scope, code, global_scope)
     elif expr.node_type == "ID":
         var_num, var_type = scope[expr.value]
         code = loadVar(var_num, var_type, code)
+    elif expr.node_type == "FUNCCALL":
+        code = printFuncCall(expr, label_nums, scope, code, global_scope)
     return code
 
 
-def printBinary(expr, var_type, label_nums, scope, code):
+def printBinary(expr, var_type, label_nums, scope, code, global_scope):
     op_value_type = expr.op_value_type
 
     comp_num = label_nums["comparison"]
     if expr.value in ["<", "<=", ">", ">=", "==", "!="]:
         label_nums["comparison"] += 1
-    code = printExpr(expr.children[0], op_value_type, label_nums, scope, code)
-    code = printExpr(expr.children[1], op_value_type, label_nums, scope, code)
+    code = printExpr(expr.children[0], op_value_type,
+                     label_nums, scope, code, global_scope)
+    code = printExpr(expr.children[1], op_value_type,
+                     label_nums, scope, code, global_scope)
 
     if expr.value == "+":
         if var_type == "INT":
             code += f"  iadd\n"
         elif var_type == "FLOAT":
             code += f"  dadd\n"
+        return code
 
     elif expr.value == "-":
         if var_type == "INT":
             code += f"  isub\n"
         elif var_type == "FLOAT":
             code += f"  dsub\n"
+        return code
 
     elif expr.value == "*":
         if var_type == "INT":
             code += f"  imul\n"
         elif var_type == "FLOAT":
             code += f"  dmul\n"
+        return code
 
     elif expr.value == "/":
         if var_type == "INT":
             code += f"  idiv\n"
         elif var_type == "FLOAT":
             code += f"  ddiv\n"
+        return code
 
     elif expr.value == "%":
         if var_type == "INT":
             code += f"  irem\n"
         elif var_type == "FLOAT":
             code += f"  drem\n"
+        return code
 
     elif expr.value == "&&":
         code += f"  iand\n"
+        return code
 
     elif expr.value == "||":
         code += f"  ior\n"
+        return code
 
     elif expr.value == ">":
         if op_value_type == "INT":
@@ -165,20 +223,13 @@ def printBinary(expr, var_type, label_nums, scope, code):
         else:
             code += f"  dcmpg\n"
             code += f"  ifle comp_{comp_num}_false\n"
-        code += f"  iconst_1\n  goto comp_{comp_num}_end\n"
-        code += f"comp_{comp_num}_false:\n"
-        code += f"  iconst_0\n"
-        code += f"comp_{comp_num}_end:\n"
+
     elif expr.value == ">=":
         if op_value_type == "INT":
             code += f"  if_icmplt comp_{comp_num}_false\n"
         else:
             code += f"  dcmpg\n"
             code += f"  iflt comp_{comp_num}_false\n"
-        code += f"  iconst_1\n  goto comp_{comp_num}_end\n"
-        code += f"comp_{comp_num}_false:\n"
-        code += f"  iconst_0\n"
-        code += f"comp_{comp_num}_end:\n"
 
     elif expr.value == "<":
         if op_value_type == "INT":
@@ -186,10 +237,6 @@ def printBinary(expr, var_type, label_nums, scope, code):
         else:
             code += f"  dcmpg\n"
             code += f"  ifge comp_{comp_num}_false\n"
-        code += f"  iconst_1\n  goto comp_{comp_num}_end\n"
-        code += f"comp_{comp_num}_false:\n"
-        code += f"  iconst_0\n"
-        code += f"comp_{comp_num}_end:\n"
 
     elif expr.value == "<=":
         if op_value_type == "INT":
@@ -197,22 +244,39 @@ def printBinary(expr, var_type, label_nums, scope, code):
         else:
             code += f"  dcmpg\n"
             code += f"  ifgt comp_{comp_num}_false\n"
-        code += f"  iconst_1\n  goto comp_{comp_num}_end\n"
-        code += f"comp_{comp_num}_false:\n"
-        code += f"  iconst_0\n"
-        code += f"comp_{comp_num}_end:\n"
 
     elif expr.value == "==":
-        pass
+        if op_value_type == "STRING":
+            code += f"  invokevirtual java/lang/String.equals(Ljava/lang/Object;)Z\n"
+            return code
+        elif op_value_type == "INT" or op_value_type == "BOOL":
+            code += f"  ifne comp_{comp_num}_false\n"
+        elif op_value_type == "FLOAT":
+            code += f"  dcmpg\n"
+            code += f"  ifne comp_{comp_num}_false\n"
 
     elif expr.value == "!=":
-        pass
+        if op_value_type == "STRING":
+            code += f"  invokevirtual java/lang/String.equals(Ljava/lang/Object;)Z\n"
+            code += f"  iconst_1\n  ixor\n"
+            return code
+        elif op_value_type == "INT" or op_value_type == "BOOL":
+            code += f"  ifeq comp_{comp_num}_false\n"
+        elif op_value_type == "FLOAT":
+            code += f"  dcmpg\n"
+            code += f"  ifeq comp_{comp_num}_false\n"
+
+    code += f"  iconst_1\n  goto comp_{comp_num}_end\n"
+    code += f"comp_{comp_num}_false:\n"
+    code += f"  iconst_0\n"
+    code += f"comp_{comp_num}_end:\n"
 
     return code
 
 
-def printUnary(expr, var_type, label_nums, scope, code):
-    code = printExpr(expr.children[0], var_type, label_nums, scope, code)
+def printUnary(expr, var_type, label_nums, scope, code, global_scope):
+    code = printExpr(expr.children[0], var_type,
+                     label_nums, scope, code, global_scope)
     if expr.value == "-":
         if var_type == "INT":
             code += f"  ineg\n"
@@ -227,16 +291,17 @@ def printUnary(expr, var_type, label_nums, scope, code):
     return code
 
 
-def printAssign(stmt, label_nums, scope, code):
+def printAssign(stmt, label_nums, scope, code, global_scope):
     var_name = stmt.value
     var_num, var_type = scope[var_name]
 
-    code = printExpr(stmt.children[0], var_type, label_nums, scope, code)
+    code = printExpr(stmt.children[0], var_type,
+                     label_nums, scope, code, global_scope)
     code = storeVar(var_num, var_type, code)
     return code
 
 
-def printIf(node, label_nums, scope, code):
+def printIf(node, label_nums, scope, code, global_scope):
     expr, stmt = node.children
     if_num = label_nums["if"]
     label_nums["if"] += 1
@@ -244,12 +309,14 @@ def printIf(node, label_nums, scope, code):
 
     expr_type = expr.node_type
     if expr_type == "ID" or expr_type == "ATOM":
-        code = printExpr(expr, "BOOL", label_nums, scope, code)
+        code = printExpr(expr, "BOOL", label_nums, scope, code, global_scope)
         code += f"  ifeq if_end_{if_num}\n"
     else:
         op_value_type = expr.op_value_type
-        code = printExpr(expr.children[0], op_value_type, scope, code)
-        code = printExpr(expr.children[1], op_value_type, scope, code)
+        code = printExpr(
+            expr.children[0], op_value_type, label_nums, scope, code, global_scope)
+        code = printExpr(
+            expr.children[1], op_value_type, label_nums, scope, code, global_scope)
         if op_value_type == "INT":
             if expr.value == ">":
                 code += f"  if_icmple if_end_{if_num}\n"
@@ -278,29 +345,31 @@ def printIf(node, label_nums, scope, code):
             elif expr.value == "!=":
                 code += f"  ifeq if_end_{if_num}\n"
         elif op_value_type == "BOOL":
-            code = printExpr(expr, "BOOL", label_nums, scope, code)
+            code = printExpr(expr, "BOOL", label_nums,
+                             scope, code, global_scope)
             code += f"  ifeq if_end_{if_num}\n"
 
-    code = printStmt(stmt.children, label_nums, scope, code)
+    if stmt is not None:
+        code = printStmt(stmt.children, label_nums, scope, code, global_scope)
     code += f"if_end_{if_num}:\n"
     return code
 
 
-def printIfElse(node, label_nums, scope, code):
+def printIfElse(node, label_nums, scope, code, global_scope):
     expr, if_part, else_part = node.children
     if_else_num = label_nums["if_else"]
     label_nums["if_else"] += 1
 
     expr_type = expr.node_type
     if expr_type == "ID" or expr_type == "ATOM":
-        code = printExpr(expr, "BOOL", label_nums, scope, code)
+        code = printExpr(expr, "BOOL", label_nums, scope, code, global_scope)
         code += f"  ifeq if_else_{if_else_num}\n"
     else:
         op_value_type = expr.op_value_type
         code = printExpr(expr.children[0],
-                         op_value_type, label_nums, scope, code)
+                         op_value_type, label_nums, scope, code, global_scope)
         code = printExpr(expr.children[1],
-                         op_value_type, label_nums, scope, code)
+                         op_value_type, label_nums, scope, code, global_scope)
         if op_value_type == "INT":
             if expr.value == ">":
                 code += f"  if_icmple if_else_{if_else_num}\n"
@@ -331,19 +400,24 @@ def printIfElse(node, label_nums, scope, code):
                 code += f"  ifeq if_else_{if_else_num}\n"
 
         elif op_value_type == "BOOL":
-            code = printExpr(expr, "BOOL", label_nums, scope, code)
+            code = printExpr(expr, "BOOL", label_nums,
+                             scope, code, global_scope)
             code += f"  ifeq if_else_{if_else_num}\n"
 
-    code = printStmt(if_part.children, label_nums, scope, code)
+    if if_part is not None:
+        code = printStmt(if_part.children, label_nums,
+                         scope, code, global_scope)
     code += f"  goto if_else_end_{if_else_num}\n"
     code += f"if_else_{if_else_num}:\n"
-    code = printStmt(else_part.children, label_nums, scope, code)
+    if else_part is not None:
+        code = printStmt(else_part.children, label_nums,
+                         scope, code, global_scope)
     code += f"if_else_end_{if_else_num}:\n"
 
     return code
 
 
-def printWhile(node, label_nums, scope, code):
+def printWhile(node, label_nums, scope, code, global_scope):
     expr, stmt = node.children
     while_num = label_nums["while"]
     label_nums["while"] += 1
@@ -351,17 +425,20 @@ def printWhile(node, label_nums, scope, code):
     code += f"  goto while_{while_num}_check\n"
 
     code += f"while_{while_num}_body:\n"
-    code = printStmt(stmt.children, label_nums, scope, code)
+    if stmt is not None:
+        code = printStmt(stmt.children, label_nums, scope, code, global_scope)
 
     code += f"while_{while_num}_check:\n"
     expr_type = expr.node_type
     if expr_type == "ID" or expr_type == "ATOM":
-        code = printExpr(expr, "BOOL", label_nums, scope, code)
+        code = printExpr(expr, "BOOL", label_nums, scope, code, global_scope)
         code += f"  ifne while_{while_num}_body\n"
         return code
     op_value_type = expr.op_value_type
-    code = printExpr(expr.children[0], op_value_type, label_nums, scope, code)
-    code = printExpr(expr.children[1], op_value_type, label_nums, scope, code)
+    code = printExpr(expr.children[0], op_value_type,
+                     label_nums, scope, code, global_scope)
+    code = printExpr(expr.children[1], op_value_type,
+                     label_nums, scope, code, global_scope)
     if op_value_type == "INT":
         if expr.value == ">":
             code += f"  if_icmpgt while_{while_num}_body\n"
@@ -390,17 +467,19 @@ def printWhile(node, label_nums, scope, code):
         elif expr.value == "!=":
             code += f"  ifne while_{while_num}_body\n"
     elif op_value_type == "BOOL":
-        code = printExpr(expr, "BOOL", label_nums, scope, code)
+        code = printExpr(expr, "BOOL", label_nums, scope, code, global_scope)
         code += f"  ifne while_{while_num}_body\n"
     return code
 
 
-def printFuncCall(stmt, label_nums, scope, code):
+def printFuncCall(stmt, label_nums, scope, code, global_scope):
     if stmt.value == "fmt.Println":
+        if stmt.args is None:
+            return code
         arg = stmt.args[0]
-        var_type = getType(arg, scope)
+        var_type = getType(arg, scope, global_scope)
         code += "  getstatic java/lang/System/out Ljava/io/PrintStream;\n"
-        code = printExpr(arg, var_type, label_nums, scope, code)
+        code = printExpr(arg, var_type, label_nums, scope, code, global_scope)
         if var_type == "INT":
             code += f"  invokevirtual java/io/PrintStream/println(I)V\n"
         elif var_type == "FLOAT":
@@ -410,7 +489,17 @@ def printFuncCall(stmt, label_nums, scope, code):
         elif var_type == "BOOL":
             code += f"  invokevirtual java/io/PrintStream/println(Z)V\n"
     else:
-        pass
+        if stmt.args is not None:
+            arg = stmt.args[0]
+            var_type = getType(arg, scope, global_scope)
+            code = printExpr(arg, var_type, label_nums,
+                             scope, code, global_scope)
+        code += f"  invokestatic {label_nums['class_name']}/{stmt.value}("
+        func_args, return_type = global_scope[stmt.value]
+        if func_args is not None:
+            for arg in func_args:
+                code += typeToJVM(arg[1])
+        code += f"){typeToJVM(return_type)}\n"
 
     return code
 
@@ -438,24 +527,30 @@ def storeVar(var_num, var_type, code):
 def codeGen(tree, filename):
     code = begin(filename)
     ast = tree.ast
-    label_nums = {"if": 0, "if_else": 0, "while": 0, "comparison": 0}
+    global_scope = tree.global_scope
+    label_nums = {"if": 0, "if_else": 0, "while": 0,
+                  "comparison": 0, "class_name": filename}
     if ast == None:
         sys.exit("CAN'T GENERATE CODE FROM EMPTY AST")
 
     for func in ast.children:
         func_vars, locals_limit = setFuncScope(func.scope)
-        code = setFuncStart(func, locals_limit, code)
+        func_args, func_return_type = global_scope[func.value]
+        code = setFuncStart(func, func_args, locals_limit,
+                            func_return_type, code)
         body = func.children[0].children
         for block in body:
             node_type = block.node_type
             if node_type == "DECL":
-                code = printDecl(block.children, label_nums, func_vars, code)
+                code = printDecl(block.children, label_nums,
+                                 func_vars, code, global_scope)
             if node_type == "STMT":
-                code = printStmt(block.children, label_nums, func_vars, code)
+                code = printStmt(block.children, label_nums,
+                                 func_vars, code, global_scope)
 
         if code.endswith("  return\n"):
-            code += ".end method\n"
+            code += ".end method\n\n"
         else:
-            code += "  return\n.end method\n"
+            code += "  return\n.end method\n\n"
 
     return code

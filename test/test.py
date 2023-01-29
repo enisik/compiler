@@ -7,7 +7,9 @@ def main(arg):
     for filename in os.listdir(arg):
         print(filename)
         os.system(
-            f"python3 main.py -parse {arg}/{filename}")
+            f"python3 ../main.py -compile {arg}/{filename}")
+        os.system(f"java -jar ../jasmin.jar {filename}.j")
+        os.system(f"java {filename}")
         print("")
     print("\nTesting Finished")
 

@@ -23,6 +23,8 @@ def typeChecking(tree):
         elif node_type == 'FUNCCALL':
             func_name = node.value
             if func_name == "fmt.Println":
+                if node.args is None:
+                    return None
                 getType(node.args[0], scope)
                 return None
             if func_name not in tree.global_scope:

@@ -1,0 +1,42 @@
+Compiled from "fibonacci_recursive.j"
+public class fibonacci_recursive {
+  public fibonacci_recursive();
+    Code:
+       0: aload_0
+       1: invokespecial #26                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void main(java.lang.String[]);
+    Code:
+       0: getstatic     #19                 // Field java/lang/System.out:Ljava/io/PrintStream;
+       3: ldc           #8                  // int 5
+       5: invokestatic  #13                 // Method Fib:(I)I
+       8: invokevirtual #9                  // Method java/io/PrintStream.println:(I)V
+      11: return
+
+  public static int Fib(int);
+    Code:
+       0: iload         0
+       2: ldc           #12                 // int 0
+       4: if_icmple     41
+       7: iload         0
+       9: ldc           #10                 // int 2
+      11: if_icmpgt     20
+      14: ldc           #11                 // int 1
+      16: ireturn
+      17: goto          38
+      20: iload         0
+      22: ldc           #11                 // int 1
+      24: isub
+      25: invokestatic  #13                 // Method Fib:(I)I
+      28: iload         0
+      30: ldc           #10                 // int 2
+      32: isub
+      33: invokestatic  #13                 // Method Fib:(I)I
+      36: iadd
+      37: ireturn
+      38: goto          44
+      41: ldc           #12                 // int 0
+      43: ireturn
+      44: return
+}

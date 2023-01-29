@@ -30,11 +30,12 @@ def parse(file):
     print("LEXING & PARSING & AST-GENERATING SUCCESSFUL")
     typeChecking(tree)
     print("TYPECHECKING SUCCESSFUL")
+    print(tree.global_scope)
     return tree
 
 
 if __name__ == '__main__':
-    filename = "./test/compile_code/if_bool.go"
+    filename = "./test/compile_code/fibonacci_recursive.go"
     tree = parse(filename)
     filename = filename.removesuffix(".go")
     code = codeGen(tree, filename)

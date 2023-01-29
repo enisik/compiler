@@ -97,7 +97,7 @@ if_control
 
 for_loop
 	returns[node, stat]:
-	FOR expr NL? CLB NL? (statements {$stat = $statements.node})? NL? CRB {$node = self.forNode($expr.node, $stat)
+	FOR expr NL? CLB NL? (statements {$stat = $statements.node})? NL? CRB NL? {$node = self.forNode($expr.node, $stat)
 		};
 
 func_call
