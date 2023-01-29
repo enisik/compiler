@@ -35,9 +35,9 @@ def parse(file):
 
 
 if __name__ == '__main__':
-    filename = "./test/compile_code/fibonacci_recursive.go"
+    filename = "./test/valid_codesnipsets/assign_int_to_float64.go"
     tree = parse(filename)
     filename = filename.removesuffix(".go")
     code = codeGen(tree, filename)
-    with open(filename+".j", 'w') as file:
-        file.write(code)
+    # with open(filename+".j", 'w') as file:
+    #    file.write(code)

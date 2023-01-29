@@ -8,6 +8,7 @@ func main() {
 
         } else {
             fmt.Println("foo")
+            return
         }
     }
 }

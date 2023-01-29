@@ -105,19 +105,23 @@ def printStmt(statments, label_nums, scope, code, global_scope):
 
 def printReturn(stmt, label_nums, scope, code, global_scope):
     return_expr = stmt.children[0]
+    return_type = global_scope[label_nums["func_name"]][1]
     if return_expr is None:
-        return_type = None
+        expr_type = None
     else:
-        return_type = getType(return_expr, scope, global_scope)
-        code = printExpr(return_expr, return_type, label_nums,
+        expr_type = getType(return_expr, scope, global_scope)
+        code = printExpr(return_expr, expr_type, label_nums,
                          scope, code, global_scope)
-    if return_type == "INT" or return_type == "BOOL":
-        code += f"  ireturn\n"
-    elif return_type == "FLOAT":
+    if expr_type == "INT" or expr_type == "BOOL":
+        if return_type == "FLOAT":
+            code += f"  i2d\n  dreturn\n"
+        else:
+            code += f"  ireturn\n"
+    elif expr_type == "FLOAT":
         code += f"  dreturn\n"
-    elif return_type == "STRING":
+    elif expr_type == "STRING":
         code += f"  areturn\n"
-    elif return_type is None:
+    elif expr_type is None:
         code += f"  return\n"
     return code
 
@@ -129,9 +133,11 @@ def printDecl(declarations, label_nums, scope, code, global_scope):
             var_type = var[1]
             # print(decl.children)
             expr = decl.children[0]
-            code = printExpr(expr, var_type, label_nums,
+            op_value_type = getType(expr, scope, global_scope)
+            code = printExpr(expr, op_value_type, label_nums,
                              scope, code, global_scope)
-        code = storeVar(var[0], var_type, code)
+
+        code = storeVar(var[0], var_type, op_value_type, code)
     return code
 
 
@@ -173,7 +179,9 @@ def printBinary(expr, var_type, label_nums, scope, code, global_scope):
                      label_nums, scope, code, global_scope)
     code = printExpr(expr.children[1], op_value_type,
                      label_nums, scope, code, global_scope)
-
+    operand_type = getType(expr.children[0], scope, global_scope)
+    if var_type == "FLOAT" and operand_type == "INT":
+        var_type = "INT"
     if expr.value == "+":
         if var_type == "INT":
             code += f"  iadd\n"
@@ -297,7 +305,8 @@ def printAssign(stmt, label_nums, scope, code, global_scope):
 
     code = printExpr(stmt.children[0], var_type,
                      label_nums, scope, code, global_scope)
-    code = storeVar(var_num, var_type, code)
+    op_value_type = getType(stmt.children[0], scope, global_scope)
+    code = storeVar(var_num, var_type, op_value_type, code)
     return code
 
 
@@ -435,11 +444,11 @@ def printWhile(node, label_nums, scope, code, global_scope):
         code += f"  ifne while_{while_num}_body\n"
         return code
     op_value_type = expr.op_value_type
-    code = printExpr(expr.children[0], op_value_type,
-                     label_nums, scope, code, global_scope)
-    code = printExpr(expr.children[1], op_value_type,
-                     label_nums, scope, code, global_scope)
     if op_value_type == "INT":
+        code = printExpr(expr.children[0], op_value_type,
+                         label_nums, scope, code, global_scope)
+        code = printExpr(expr.children[1], op_value_type,
+                         label_nums, scope, code, global_scope)
         if expr.value == ">":
             code += f"  if_icmpgt while_{while_num}_body\n"
         elif expr.value == ">=":
@@ -453,6 +462,10 @@ def printWhile(node, label_nums, scope, code, global_scope):
         elif expr.value == "!=":
             code += f"  if_icmpne while_{while_num}_body\n"
     elif op_value_type == "FLOAT":
+        code = printExpr(expr.children[0], op_value_type,
+                         label_nums, scope, code, global_scope)
+        code = printExpr(expr.children[1], op_value_type,
+                         label_nums, scope, code, global_scope)
         code += f"  dcmpg\n"
         if expr.value == ">":
             code += f"  ifgt while_{while_num}_body\n"
@@ -489,13 +502,19 @@ def printFuncCall(stmt, label_nums, scope, code, global_scope):
         elif var_type == "BOOL":
             code += f"  invokevirtual java/io/PrintStream/println(Z)V\n"
     else:
-        if stmt.args is not None:
-            arg = stmt.args[0]
-            var_type = getType(arg, scope, global_scope)
-            code = printExpr(arg, var_type, label_nums,
-                             scope, code, global_scope)
-        code += f"  invokestatic {label_nums['class_name']}/{stmt.value}("
         func_args, return_type = global_scope[stmt.value]
+        i = 0
+        if stmt.args is not None:
+            for arg in stmt.args:
+                var_type = getType(arg, scope, global_scope)
+                code = printExpr(arg, var_type, label_nums,
+                                 scope, code, global_scope)
+                func_arg_type = func_args[i][1]
+                if func_arg_type == "FLOAT" and var_type == "INT":
+                    code += f"  i2d\n"
+                i += 1
+
+        code += f"  invokestatic {label_nums['class_name']}/{stmt.value}("
         if func_args is not None:
             for arg in func_args:
                 code += typeToJVM(arg[1])
@@ -514,10 +533,12 @@ def loadVar(var_num, var_type, code):
     return code
 
 
-def storeVar(var_num, var_type, code):
+def storeVar(var_num, var_type, expr_value, code):
     if var_type == "INT" or var_type == "BOOL":
         code += f"  istore {var_num}\n"
     elif var_type == "FLOAT":
+        if expr_value == "INT":
+            code += "  i2d\n"
         code += f"  dstore {var_num}\n"
     elif var_type == "STRING":
         code += f"  astore {var_num}\n"
@@ -534,6 +555,7 @@ def codeGen(tree, filename):
         sys.exit("CAN'T GENERATE CODE FROM EMPTY AST")
 
     for func in ast.children:
+        label_nums["func_name"] = func.value
         func_vars, locals_limit = setFuncScope(func.scope)
         func_args, func_return_type = global_scope[func.value]
         code = setFuncStart(func, func_args, locals_limit,
@@ -548,7 +570,7 @@ def codeGen(tree, filename):
                 code = printStmt(block.children, label_nums,
                                  func_vars, code, global_scope)
 
-        if code.endswith("  return\n"):
+        if code.endswith("return\n"):
             code += ".end method\n\n"
         else:
             code += "  return\n.end method\n\n"

@@ -8,6 +8,7 @@ def main(arg):
         print(filename)
         os.system(
             f"python3 ../main.py -compile {arg}/{filename}")
+        filename = filename.removesuffix(".go")
         os.system(f"java -jar ../jasmin.jar {filename}.j")
         os.system(f"java {filename}")
         print("")
